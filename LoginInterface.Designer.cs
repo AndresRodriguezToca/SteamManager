@@ -2,7 +2,7 @@
 
 namespace SteamManager
 {
-    partial class Form1
+    partial class LoginInterface
     {
         /// <summary>
         /// Required designer variable.
@@ -78,7 +78,6 @@ namespace SteamManager
             this.tbSDK.Name = "tbSDK";
             this.tbSDK.Size = new System.Drawing.Size(170, 20);
             this.tbSDK.TabIndex = 1;
-            this.tbSDK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel1
             // 
@@ -224,7 +223,7 @@ namespace SteamManager
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 15);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Exclusibly Distributed by";
+            this.label5.Text = "Publicly Distributed by";
             // 
             // linkLabel1
             // 
@@ -260,7 +259,7 @@ namespace SteamManager
             this.panel2.Size = new System.Drawing.Size(203, 40);
             this.panel2.TabIndex = 18;
             // 
-            // Form1
+            // LoginInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,7 +276,7 @@ namespace SteamManager
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "LoginInterface";
             this.Text = "Steam Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

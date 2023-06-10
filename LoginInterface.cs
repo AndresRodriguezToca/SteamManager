@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace SteamManager
 {
-    public partial class Form1 : Form
+    public partial class LoginInterface : Form
     {
         //GLOBALS
         private const string SteamWebAPIBaseUrl = "https://api.steampowered.com";
         private const string ValidateEndPoint = "/ISteamUserAuth/AuthenticateUserTicket/v1/";
 
-        public Form1()
+        public LoginInterface()
         {
             InitializeComponent();
             CenterToScreen();
@@ -68,11 +68,16 @@ namespace SteamManager
             //INITIATE CLIENT
             SteamApiClient client = new SteamApiClient(sdk);
             SteamAccount steamAccount = await client.ValidateUserAPI(sdk, steamID);
-            steamAccount = null;
+
             //VALIDATE STEAM INFORMATION
             if (steamAccount != null)
             {
                 //OPEN APPLICATION
+                this.Hide();
+                MainInterface mainInterface = new MainInterface(client, steamAccount);
+                mainInterface.Closed += (s, args) => this.Close();
+                mainInterface.Show();
+
             } else {
                 //POP ERROR
                 System.Windows.Forms.MessageBox.Show("Could not adquire your account information. Make sure the SDK and SteamID are correct, and try again!");
