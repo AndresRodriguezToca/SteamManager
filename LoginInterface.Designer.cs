@@ -223,7 +223,7 @@ namespace SteamManager
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 15);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Exclusibly Distributed by";
+            this.label5.Text = "Publicly Distributed by";
             // 
             // linkLabel1
             // 
