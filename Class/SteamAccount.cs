@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace SteamManager.Class
 {
-    internal class SteamAccount
+    public class SteamAccount
     {
         private string steamid;
         private string communityvisibilitystate;
@@ -31,40 +29,88 @@ namespace SteamManager.Class
         private string locstatecode;
         private string loccityid;
 
-        public SteamAccount(string steamid, string communityvisibilitystate, string profilestate, string personaname, string lastlogoff, string commentpermission, string profileurl, string avatar, string avatarmedium, string avatarfull, string personastate, string realname, string primaryclanid, string timecreated, string personastateflags, string loccountrycode, string gameid, string gameserverip, string gameextrainfo, string cityid, string locstatecode, string loccityid)
+        public SteamAccount(string steamAPIResponse)
         {
-            this.steamid = steamid ?? throw new ArgumentNullException(nameof(steamid));
-            this.communityvisibilitystate = communityvisibilitystate ?? throw new ArgumentNullException(nameof(communityvisibilitystate));
-            this.profilestate = profilestate ?? throw new ArgumentNullException(nameof(profilestate));
-            this.personaname = personaname ?? throw new ArgumentNullException(nameof(personaname));
-            this.lastlogoff = lastlogoff ?? throw new ArgumentNullException(nameof(lastlogoff));
-            this.commentpermission = commentpermission ?? throw new ArgumentNullException(nameof(commentpermission));
-            this.profileurl = profileurl ?? throw new ArgumentNullException(nameof(profileurl));
-            this.avatar = avatar ?? throw new ArgumentNullException(nameof(avatar));
-            this.avatarmedium = avatarmedium ?? throw new ArgumentNullException(nameof(avatarmedium));
-            this.avatarfull = avatarfull ?? throw new ArgumentNullException(nameof(avatarfull));
-            this.personastate = personastate ?? throw new ArgumentNullException(nameof(personastate));
-            this.realname = realname ?? throw new ArgumentNullException(nameof(realname));
-            this.primaryclanid = primaryclanid ?? throw new ArgumentNullException(nameof(primaryclanid));
-            this.timecreated = timecreated ?? throw new ArgumentNullException(nameof(timecreated));
-            this.personastateflags = personastateflags ?? throw new ArgumentNullException(nameof(personastateflags));
-            this.loccountrycode = loccountrycode ?? throw new ArgumentNullException(nameof(loccountrycode));
-            this.gameid = gameid ?? throw new ArgumentNullException(nameof(gameid));
-            this.gameserverip = gameserverip ?? throw new ArgumentNullException(nameof(gameserverip));
-            this.gameextrainfo = gameextrainfo ?? throw new ArgumentNullException(nameof(gameextrainfo));
-            this.cityid = cityid ?? throw new ArgumentNullException(nameof(cityid));
-            this.locstatecode = locstatecode ?? throw new ArgumentNullException(nameof(locstatecode));
-            this.loccityid = loccityid ?? throw new ArgumentNullException(nameof(loccityid));
+            //VALIDATE AN ASSIGN JTOKEN
+            JObject json = JObject.Parse(steamAPIResponse);
+            JToken player = json["response"]["players"].FirstOrDefault();
+
+            steamid = player.Value<string>("steamid");
+            communityvisibilitystate = player.Value<string>("communityvisibilitystate");
+            profilestate = player.Value<string>("profilestate");
+            personaname = player.Value<string>("personaname");
+            lastlogoff = player.Value<string>("lastlogoff");
+            commentpermission = player.Value<string>("commentpermission");
+            profileurl = player.Value<string>("profileurl");
+            avatar = player.Value<string>("avatar");
+            avatarmedium = player.Value<string>("avatarmedium");
+            avatarfull = player.Value<string>("avatarfull");
+            personastate = player.Value<string>("personastate");
+            realname = player.Value<string>("realname");
+            primaryclanid = player.Value<string>("primaryclanid");
+            timecreated = player.Value<string>("timecreated");
+            personastateflags = player.Value<string>("personastateflags");
+            loccountrycode = player.Value<string>("loccountrycode");
+            gameid = player.Value<string>("gameid");
+            gameserverip = player.Value<string>("gameserverip");
+            gameextrainfo = player.Value<string>("gameextrainfo");
+            cityid = player.Value<string>("cityid");
+            locstatecode = player.Value<string>("locstatecode");
+            loccityid = player.Value<string>("loccityid");
         }
 
 
         //GETTER
         public string getSteamID {  get { return steamid; } }
-        public string getCredentials { get { return credentials; } }
-
-        //SETTER
-        public void setSteamID(String steamID) { this.steamid = steamID; }
-        public void setCredentials(String  credentials) { this.credentials = credentials; }
+        public string getCommunityState { get { return communityvisibilitystate; } }
+        public string getProfileState { get { return profilestate; } }
+        public string getPersonName { get { return personaname; } }
+        public string getLastLogoff { get { return lastlogoff; } }
+        public string getCommentPermission { get { return commentpermission; } }
+        public string getProfileURL { get { return profileurl; } }
+        public string getAvatar { get { return avatar; } }
+        public string getAvatarMedium { get { return avatarmedium; } }
+        public string getAvatarFull { get { return avatarfull; } }
+        public string getPersonAsState { get { return personastate; } }
+        public string getRealName { get { return realname; } }
+        public string getCredentialsPrimaryClanID { get { return primaryclanid; } }
+        public string getTimeCreated { get { return timecreated; } }
+        public string getPersonaStateFlags { get { return personastateflags; } }
+        public string getLocalCountryCode { get { return loccountrycode; } }
+        public string getGameID { get { return gameid; } }
+        public string getGameServerIP { get { return gameserverip; } }
+        public string getGameExtraInfo { get { return gameextrainfo; } }
+        public string getCityID { get { return cityid; } }
+        public string getLocalStateCode { get { return locstatecode; } }
+        public string getLocalCityID { get { return loccityid; } }
+        public string[] getSteamInformation()
+        {
+            return new string[]
+            {
+                steamid,
+                communityvisibilitystate,
+                profilestate,
+                personaname,
+                lastlogoff,
+                commentpermission,
+                profileurl,
+                avatar,
+                avatarmedium,
+                avatarfull,
+                personastate,
+                realname,
+                primaryclanid,
+                timecreated,
+                personastateflags,
+                loccountrycode,
+                gameid,
+                gameserverip,
+                gameextrainfo,
+                cityid,
+                locstatecode,
+                loccityid
+            };
+        }
 
         //EQUAL METHOD
         public override bool Equals(object obj)

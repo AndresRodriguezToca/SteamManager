@@ -1,16 +1,13 @@
 ﻿using Steam.Models.DOTA2;
+using SteamManager.Class;
 using SteamManager.Services;
 using SteamWebAPI2.Interfaces;
 using SteamWebAPI2.Models;
 using SteamWebAPI2.Utilities;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Net.Http;
-using System.Security.Cryptography;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace SteamManager
 {
@@ -70,7 +67,17 @@ namespace SteamManager
 
             //INITIATE CLIENT
             SteamApiClient client = new SteamApiClient(sdk);
-            await client.ValidateUserAPI(sdk, steamID);
+            SteamAccount steamAccount = await client.ValidateUserAPI(sdk, steamID);
+            steamAccount = null;
+            //VALIDATE STEAM INFORMATION
+            if (steamAccount != null)
+            {
+                //OPEN APPLICATION
+            } else {
+                //POP ERROR
+                System.Windows.Forms.MessageBox.Show("Could not adquire your account information. Make sure the SDK and SteamID are correct, and try again!");
+                return;
+            }
 
 
         }
