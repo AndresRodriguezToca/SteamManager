@@ -19,6 +19,7 @@ namespace SteamManager.Services
 
     public class SteamApiClient
     {
+        //LIBRARY BASE ON https://steamapi.xpaw.me/ by xPaw
         private const string SteamApiBaseUrl = "https://api.steampowered.com";
         private const string iSteamUser = "iSteamUser"; //Steam provides API calls to provide information about Steam users.
         private const string ISteamNews = "ISteamNews"; //Steam provides methods to fetch news feeds for each Steam game.
