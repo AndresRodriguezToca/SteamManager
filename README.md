@@ -1,3 +1,3 @@
 # SteamManager
-Basicaly an application capable for fetching data from Steam and seamesly help the user manage his account better than Steam itself.
+Basically an application capable of fetching data from Steam and seamlessly help the user manage his/her account better than Steam itself.
 Non-Profitable / Public Repo
