@@ -12,12 +12,19 @@ namespace SteamManager.Services
     using System.Security.Cryptography;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Xml.Linq;
     using Newtonsoft.Json;
+    using SteamManager.Class;
     using SteamWebAPI2.Models;
 
     public class SteamApiClient
     {
         private const string SteamApiBaseUrl = "https://api.steampowered.com";
+        private const string iSteamUser = "iSteamUser"; //Steam provides API calls to provide information about Steam users.
+        private const string ISteamNews = "ISteamNews"; //Steam provides methods to fetch news feeds for each Steam game.
+        private const string ISteamUserStats = "ISteamUserStats"; //Steam provides methods to fetch global stat information by game.
+
+        //ENCRYPTER (IN CASE I NEEDED FOR STEAM)
         private Encrypter Encrypter = new Encrypter();
         private const int byteCount = 32;
 
@@ -30,26 +37,32 @@ namespace SteamManager.Services
             this.httpClient = new HttpClient();
         }
 
-        public async Task<string> ValidateUserAPI(string sdk, string steamID)
+        public async Task<SteamAccount> ValidateUserAPI(string sdk, string steamID)
         {
 
             try
             {
                 // Send a POST request to the Steam API for user authentication
-                var request = new HttpRequestMessage(HttpMethod.Get, $"{SteamApiBaseUrl}/ISteamUser/GetPlayerSummaries/v0002/?key={sdk}&steamids={steamID}");
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{SteamApiBaseUrl}/{iSteamUser}/GetPlayerSummaries/v0002/?key={sdk}&steamids={steamID}");
 
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
                 Console.WriteLine(response);
                 var responseContent = await response.Content.ReadAsStringAsync();
 
-                // Print the response content
-                Console.WriteLine(responseContent);
+                if(responseContent != null)
+                {
+                    SteamAccount steamAccount = new SteamAccount(responseContent);
+                    return steamAccount;
+                } else
+                {
+                    return null;
+                }
 
-                if(responseContent.StatusCode = )
+                
             }
             catch (Exception)
             {
-                return "INVALID";
+                return null;
             }
         }
 
