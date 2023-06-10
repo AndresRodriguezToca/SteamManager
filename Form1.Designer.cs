@@ -78,7 +78,6 @@ namespace SteamManager
             this.tbSDK.Name = "tbSDK";
             this.tbSDK.Size = new System.Drawing.Size(170, 20);
             this.tbSDK.TabIndex = 1;
-            this.tbSDK.Text = "E696AFED94EF8337DDBDBE8DB81513C6";
             this.tbSDK.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel1
@@ -151,7 +150,6 @@ namespace SteamManager
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(170, 20);
             this.tbUsername.TabIndex = 2;
-            this.tbUsername.Text = "76561199134343764";
             // 
             // label1
             // 
