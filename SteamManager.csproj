@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\SteamAccount.cs" />
+    <Compile Include="Class\SteamOwnedGames.cs" />
     <Compile Include="LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>

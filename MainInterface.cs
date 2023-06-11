@@ -1,24 +1,28 @@
 ﻿using SteamManager.Class;
 using SteamManager.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Net;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
+using System.Threading.Tasks;
 
 namespace SteamManager
 {
+
     public partial class MainInterface : Form
     {
+        //AVOID DEADLOCK !!!
+        public async Task FetchDataAndSetupInterfaceElements()
+        {
+            //FETCH ADDITIONAL DATA
+            this.steamOwnedGames = await steamApiClient.GetOwnerGames(steamAccount);
+        }
+
         //GENERAL VARIABLES
         SteamApiClient steamApiClient;
         SteamAccount steamAccount;
+        SteamOwnedGames steamOwnedGames;
         public MainInterface(SteamApiClient steamApiClient, SteamAccount steamAccount)
         {
             //ASSIGN VARIABLES
@@ -32,6 +36,31 @@ namespace SteamManager
             this.WindowState = FormWindowState.Maximized;
             SetBackgroundGradient(Color.FromArgb(23, 26, 33));
 
+            //FETCH DATA AND SETUP INTERFACE ELEMENTS
+            Task.Run(async () =>
+            {
+                await FetchDataAndSetupInterfaceElements();
+
+                //SETUP ELEMENTS
+
+                //IMAGE USERNAME
+                pBoxImage.IconChar = FontAwesome.Sharp.IconChar.None;
+                WebRequest request = WebRequest.Create(steamAccount.getAvatarFull);
+                WebResponse response = await request.GetResponseAsync();
+                System.IO.Stream responseStream = response.GetResponseStream();
+                pBoxImage.BackgroundImage = new System.Drawing.Bitmap(responseStream);
+                pBoxImage.BackgroundImageLayout = ImageLayout.Stretch;
+                //USERNAME TEXT
+                this.Invoke((Action)(() => lblUsername.Text = steamAccount.getPersonName));
+                //OWNED GAMES COUNT
+                if (steamOwnedGames != null)
+                {
+                    string ownedGamesCount = steamOwnedGames.Games.Count.ToString();
+                    this.Invoke((Action)(() => lbOwnedGamesCount.Text = ownedGamesCount));
+                }
+
+
+            }).ConfigureAwait(true);
         }
 
         //ADD BACKGROUND GRADIENT EFFECT
@@ -55,6 +84,15 @@ namespace SteamManager
             {
                 this.Invalidate();
             };
+        }
+
+        private void iconPictureBox6_Click(object sender, EventArgs e)
+        {
+            //OPEN APPLICATION
+            this.Hide();
+            LoginInterface loginInterface = new LoginInterface();
+            loginInterface.Closed += (s, args) => this.Close();
+            loginInterface.Show();
         }
     }
 }

@@ -66,8 +66,8 @@ namespace SteamManager
             }
 
             //INITIATE CLIENT
-            SteamApiClient client = new SteamApiClient(sdk);
-            SteamAccount steamAccount = await client.ValidateUserAPI(sdk, steamID);
+            SteamApiClient client = new SteamApiClient(sdk, steamID);
+            SteamAccount steamAccount = await client.ValidateUserAPI();
 
             //VALIDATE STEAM INFORMATION
             if (steamAccount != null)
