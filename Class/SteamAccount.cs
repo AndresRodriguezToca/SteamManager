@@ -112,6 +112,24 @@ namespace SteamManager.Class
             };
         }
 
+        public string GetStatusAsString()
+        {
+            switch (personastate)
+            {
+                case "0":
+                    return "Offline";
+                case "1":
+                    return "Online";
+                case "2":
+                    return "Busy";
+                case "3":
+                    return "Away";
+                default:
+                    return "Unknown Status";
+            }
+        }
+
+
         //EQUAL METHOD
         public override bool Equals(object obj)
         {

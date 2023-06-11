@@ -71,12 +71,12 @@ namespace SteamManager
             this.tbSDK.BackColor = System.Drawing.Color.White;
             this.tbSDK.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbSDK.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbSDK.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSDK.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSDK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(26)))), ((int)(((byte)(33)))));
             this.tbSDK.Location = new System.Drawing.Point(13, 12);
             this.tbSDK.Margin = new System.Windows.Forms.Padding(20);
             this.tbSDK.Name = "tbSDK";
-            this.tbSDK.Size = new System.Drawing.Size(170, 20);
+            this.tbSDK.Size = new System.Drawing.Size(170, 16);
             this.tbSDK.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -142,12 +142,12 @@ namespace SteamManager
             this.tbUsername.BackColor = System.Drawing.Color.White;
             this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbUsername.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbUsername.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(26)))), ((int)(((byte)(33)))));
             this.tbUsername.Location = new System.Drawing.Point(13, 12);
             this.tbUsername.Margin = new System.Windows.Forms.Padding(20);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(170, 20);
+            this.tbUsername.Size = new System.Drawing.Size(170, 16);
             this.tbUsername.TabIndex = 2;
             // 
             // label1
@@ -221,7 +221,7 @@ namespace SteamManager
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(57, 356);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 15);
+            this.label5.Size = new System.Drawing.Size(126, 15);
             this.label5.TabIndex = 15;
             this.label5.Text = "Publicly Distributed by";
             // 
