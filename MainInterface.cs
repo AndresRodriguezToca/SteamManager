@@ -7,6 +7,10 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Security.Principal;
+using FontAwesome.Sharp;
+using System.Windows.Media.Media3D;
+using SteamManager.InterfaceControls;
+using SteamWebAPI2.Models;
 
 namespace SteamManager
 {
@@ -24,6 +28,7 @@ namespace SteamManager
         SteamApiClient steamApiClient;
         SteamAccount steamAccount;
         SteamOwnedGames steamOwnedGames;
+        SteamAccountSecondary steamAccountSecondary = new SteamAccountSecondary();
 
         //CONTROLS
         AccountInformationControl accountInformationControl = new AccountInformationControl();
@@ -41,18 +46,23 @@ namespace SteamManager
             this.steamApiClient = steamApiClient;
             this.steamAccount = steamAccount;
 
-            
-
-
             //INITIALIZE COMPONENETS AND STYLES
             InitializeComponent();
             CenterToScreen();
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             SetBackgroundGradient(Color.FromArgb(23, 26, 33));
+            // Apply the GraphicsPath to the control's Region property
+            // Create a GraphicsPath object to define the shape
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(0, 0, pBoxImage.Width, pBoxImage.Height);
+            pBoxImage.Region = new Region(path);
 
             //NAVIGATION BUTTONS
             unselectNavigationButtons();
+
+            iconPictureBoxAddAccount.MouseEnter += MouseEnterPictureBox;
+            iconPictureBoxAddAccount.MouseLeave += MouseLeavePictureBox;
 
             //FETCH DATA AND SETUP DINAMYC INTERFACE ELEMENTS
             Task.Run(async () =>
@@ -61,7 +71,7 @@ namespace SteamManager
 
                 //SETUP ELEMENTS
                 // -- IMAGE USERNAME
-                pBoxImage.IconChar = FontAwesome.Sharp.IconChar.None;
+                pBoxImage.IconChar = IconChar.None;
                 WebRequest request = WebRequest.Create(steamAccount.getAvatarFull);
                 WebResponse response = await request.GetResponseAsync();
                 System.IO.Stream responseStream = response.GetResponseStream();
@@ -278,6 +288,19 @@ namespace SteamManager
             label.ForeColor = Color.White;
         }
 
+        private void MouseEnterPictureBox(object sender, EventArgs e)
+        {
+            IconPictureBox iconPictureBox = (IconPictureBox)sender;
+            iconPictureBox.IconColor = Color.DodgerBlue;
+        }
+
+        private void MouseLeavePictureBox(object sender, EventArgs e)
+        {
+            IconPictureBox iconPictureBox = (IconPictureBox)sender;
+            iconPictureBox.IconColor = Color.White;
+        }
+
+
         private void unselectNavigationButtons()
         {
             btnAccountInformation.ForeColor = Color.White;
@@ -328,5 +351,60 @@ namespace SteamManager
             selectedLabel.MouseEnter -= mouseEnterNav;
             selectedLabel.MouseLeave -= mouseLeaveNav;
         }
+
+        //ASK ADDITIONAL STEAM ID (ADD IF PROVIDED)
+        private async void iconPictureBoxAddAccount_Click(object sender, EventArgs e)
+        {
+            using (AddSteamAccount inputDialog = new AddSteamAccount())
+            {
+                if (inputDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //GET STEAM ID FROM INPUT BOX
+                    string userInput = inputDialog.steamID;
+
+                    //VALIDATE STEAM ACCOUNT;
+                    SteamApiClient tempClient = new SteamApiClient(steamApiClient.getAPIKey, userInput);
+                    SteamAccount tempSteamAccount = await tempClient.ValidateUserAPI();
+                    if (tempSteamAccount != null)
+                    {
+                        steamAccountSecondary.GetSetSteamAccounts.Add(tempSteamAccount);
+                        SteamOwnedGames tempSteamOwnedGames = await tempClient.GetOwnerGames(tempSteamAccount);
+                        steamAccountSecondary.GetSetSteamOwnedGames.Add(tempSteamOwnedGames);
+
+                        //ADD PROFILE TO MAIN FRAME LAYOUT
+                        IconPictureBox iconPictureBox = new IconPictureBox();
+                        iconPictureBox.Anchor = AnchorStyles.None;
+                        iconPictureBox.BackColor = Color.Transparent;
+                        iconPictureBox.Cursor = Cursors.Hand;
+                        iconPictureBox.IconColor = Color.White;
+                        iconPictureBox.IconFont = IconFont.Auto;
+                        iconPictureBox.IconSize = 36;
+                        iconPictureBox.Margin = new Padding(0);
+                        iconPictureBox.TabStop = false;
+                        iconPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                        // -- IMAGE USERNAME
+                        iconPictureBox.IconChar = IconChar.None;
+                        WebRequest request = WebRequest.Create(tempSteamAccount.getAvatarFull);
+                        WebResponse response = await request.GetResponseAsync();
+                        System.IO.Stream responseStream = response.GetResponseStream();
+                        iconPictureBox.BackgroundImage = new Bitmap(responseStream);
+                        iconPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+                        GraphicsPath path = new GraphicsPath();
+                        path.AddEllipse(0, 0, iconPictureBox.Width, iconPictureBox.Height);
+                        iconPictureBox.Region = new Region(path);
+
+                        // Add the IconPictureBox at the beginning of the FlowLayoutPanel
+                        flowLayoutPanel6.Controls.Add(iconPictureBox);
+                        flowLayoutPanel6.Controls.SetChildIndex(iconPictureBox, 0);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Steam Account not Found!");
+                    }
+                }
+            }
+        }
+
     }
 }

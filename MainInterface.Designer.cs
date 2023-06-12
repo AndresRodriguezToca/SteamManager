@@ -1,4 +1,6 @@
-﻿namespace SteamManager
+﻿using System.Windows.Forms;
+
+namespace SteamManager
 {
     partial class MainInterface
     {
@@ -34,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAccountInformation = new System.Windows.Forms.Label();
             this.btnLibraryCollection = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnGameInventory = new System.Windows.Forms.Label();
             this.btnFriendList = new System.Windows.Forms.Label();
             this.btnMessages = new System.Windows.Forms.Label();
@@ -51,7 +54,9 @@
             this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.iconPictureBoxAddAccount = new FontAwesome.Sharp.IconPictureBox();
             this.flowLayoutPanelContent = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox4)).BeginInit();
@@ -63,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBoxAddAccount)).BeginInit();
+            this.flowLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -73,6 +80,7 @@
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
             this.flowLayoutPanel1.Controls.Add(this.btnAccountInformation);
             this.flowLayoutPanel1.Controls.Add(this.btnLibraryCollection);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.btnGameInventory);
             this.flowLayoutPanel1.Controls.Add(this.btnFriendList);
             this.flowLayoutPanel1.Controls.Add(this.btnMessages);
@@ -84,7 +92,7 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(273, 567);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(273, 528);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel2
@@ -150,13 +158,26 @@
             this.btnLibraryCollection.Text = "Library Collection";
             this.btnLibraryCollection.Click += new System.EventHandler(this.btnLibraryCollection_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 147);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
+            this.label1.Size = new System.Drawing.Size(144, 44);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "My Wishlist";
+            // 
             // btnGameInventory
             // 
             this.btnGameInventory.AutoSize = true;
             this.btnGameInventory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGameInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGameInventory.ForeColor = System.Drawing.Color.White;
-            this.btnGameInventory.Location = new System.Drawing.Point(3, 147);
+            this.btnGameInventory.Location = new System.Drawing.Point(3, 191);
             this.btnGameInventory.Name = "btnGameInventory";
             this.btnGameInventory.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
             this.btnGameInventory.Size = new System.Drawing.Size(219, 44);
@@ -170,7 +191,7 @@
             this.btnFriendList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFriendList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFriendList.ForeColor = System.Drawing.Color.White;
-            this.btnFriendList.Location = new System.Drawing.Point(3, 191);
+            this.btnFriendList.Location = new System.Drawing.Point(3, 235);
             this.btnFriendList.Name = "btnFriendList";
             this.btnFriendList.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
             this.btnFriendList.Size = new System.Drawing.Size(181, 44);
@@ -184,7 +205,7 @@
             this.btnMessages.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMessages.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMessages.ForeColor = System.Drawing.Color.White;
-            this.btnMessages.Location = new System.Drawing.Point(3, 235);
+            this.btnMessages.Location = new System.Drawing.Point(3, 279);
             this.btnMessages.Name = "btnMessages";
             this.btnMessages.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
             this.btnMessages.Size = new System.Drawing.Size(134, 44);
@@ -198,7 +219,7 @@
             this.btnNews.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNews.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNews.ForeColor = System.Drawing.Color.White;
-            this.btnNews.Location = new System.Drawing.Point(3, 279);
+            this.btnNews.Location = new System.Drawing.Point(3, 323);
             this.btnNews.Name = "btnNews";
             this.btnNews.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
             this.btnNews.Size = new System.Drawing.Size(156, 44);
@@ -212,7 +233,7 @@
             this.btnFreeGames.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFreeGames.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFreeGames.ForeColor = System.Drawing.Color.White;
-            this.btnFreeGames.Location = new System.Drawing.Point(3, 323);
+            this.btnFreeGames.Location = new System.Drawing.Point(3, 367);
             this.btnFreeGames.Name = "btnFreeGames";
             this.btnFreeGames.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
             this.btnFreeGames.Size = new System.Drawing.Size(219, 44);
@@ -226,7 +247,7 @@
             this.btnPricing.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPricing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPricing.ForeColor = System.Drawing.Color.White;
-            this.btnPricing.Location = new System.Drawing.Point(3, 367);
+            this.btnPricing.Location = new System.Drawing.Point(3, 411);
             this.btnPricing.Name = "btnPricing";
             this.btnPricing.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
             this.btnPricing.Size = new System.Drawing.Size(169, 44);
@@ -253,10 +274,11 @@
             this.pBoxImage.IconChar = FontAwesome.Sharp.IconChar.Image;
             this.pBoxImage.IconColor = System.Drawing.Color.White;
             this.pBoxImage.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.pBoxImage.IconSize = 50;
+            this.pBoxImage.IconSize = 53;
             this.pBoxImage.Location = new System.Drawing.Point(3, 3);
             this.pBoxImage.Name = "pBoxImage";
-            this.pBoxImage.Size = new System.Drawing.Size(51, 50);
+            this.pBoxImage.Size = new System.Drawing.Size(59, 53);
+            this.pBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBoxImage.TabIndex = 17;
             this.pBoxImage.TabStop = false;
             // 
@@ -265,10 +287,10 @@
             this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel5);
             this.flowLayoutPanel4.Controls.Add(this.lblUsername);
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(57, 0);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(65, 0);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(216, 56);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(205, 56);
             this.flowLayoutPanel4.TabIndex = 18;
             // 
             // flowLayoutPanel5
@@ -282,7 +304,7 @@
             this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 31);
             this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(216, 25);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(205, 25);
             this.flowLayoutPanel5.TabIndex = 19;
             // 
             // iconPictureBox2
@@ -377,6 +399,24 @@
             this.lblUsername.TabIndex = 17;
             this.lblUsername.Text = "Steam Username";
             // 
+            // iconPictureBoxAddAccount
+            // 
+            this.iconPictureBoxAddAccount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBoxAddAccount.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBoxAddAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconPictureBoxAddAccount.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.iconPictureBoxAddAccount.IconColor = System.Drawing.Color.White;
+            this.iconPictureBoxAddAccount.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBoxAddAccount.IconSize = 36;
+            this.iconPictureBoxAddAccount.Location = new System.Drawing.Point(0, 0);
+            this.iconPictureBoxAddAccount.Margin = new System.Windows.Forms.Padding(0);
+            this.iconPictureBoxAddAccount.Name = "iconPictureBoxAddAccount";
+            this.iconPictureBoxAddAccount.Size = new System.Drawing.Size(36, 39);
+            this.iconPictureBoxAddAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconPictureBoxAddAccount.TabIndex = 18;
+            this.iconPictureBoxAddAccount.TabStop = false;
+            this.iconPictureBoxAddAccount.Click += new System.EventHandler(this.iconPictureBoxAddAccount_Click);
+            // 
             // flowLayoutPanelContent
             // 
             this.flowLayoutPanelContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -388,11 +428,23 @@
             this.flowLayoutPanelContent.Size = new System.Drawing.Size(780, 623);
             this.flowLayoutPanelContent.TabIndex = 2;
             // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel6.Controls.Add(this.iconPictureBoxAddAccount);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(9, 537);
+            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(273, 39);
+            this.flowLayoutPanel6.TabIndex = 3;
+            // 
             // MainInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1077, 641);
+            this.Controls.Add(this.flowLayoutPanel6);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanelContent);
@@ -413,6 +465,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBoxAddAccount)).EndInit();
+            this.flowLayoutPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -443,5 +497,8 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
         private System.Windows.Forms.Label btnMessages;
         private System.Windows.Forms.Label btnPricing;
+        private System.Windows.Forms.Label label1;
+        private FlowLayoutPanel flowLayoutPanel6;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBoxAddAccount;
     }
 }

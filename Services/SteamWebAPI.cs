@@ -34,7 +34,6 @@ namespace SteamManager.Services
         private readonly HttpClient httpClient;
         private readonly string apiKey;
         private readonly string steamID;
-        SteamOwnedGames steamOwnedGames;
 
         public SteamApiClient(string apiKey, string steamID)
         {
@@ -42,6 +41,9 @@ namespace SteamManager.Services
             this.steamID = steamID;
             this.httpClient = new HttpClient();
         }
+
+        public string getAPIKey { get { return apiKey; } }
+        public string getSteamID { get { return steamID; } }
 
         public async Task<SteamAccount> ValidateUserAPI()
         {
