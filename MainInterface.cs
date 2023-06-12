@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Security.Principal;
 
 namespace SteamManager
 {
@@ -53,19 +54,13 @@ namespace SteamManager
             //NAVIGATION BUTTONS
             unselectNavigationButtons();
 
-            //SELECT ACCOUNT INFORMATION BY DEFAULT
-            selectNavigationButtons(btnAccountInformation);
-
-
-
             //FETCH DATA AND SETUP DINAMYC INTERFACE ELEMENTS
             Task.Run(async () =>
             {
                 await FetchDataAndSetupInterfaceElements();
 
                 //SETUP ELEMENTS
-
-                //IMAGE USERNAME
+                // -- IMAGE USERNAME
                 pBoxImage.IconChar = FontAwesome.Sharp.IconChar.None;
                 WebRequest request = WebRequest.Create(steamAccount.getAvatarFull);
                 WebResponse response = await request.GetResponseAsync();
@@ -84,6 +79,7 @@ namespace SteamManager
 
             }).ConfigureAwait(true);
         }
+
 
         //ADD BACKGROUND GRADIENT EFFECT
         private void SetBackgroundGradient(Color baseColor)
