@@ -57,6 +57,7 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -106,6 +107,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\SteamAccountSecondary.cs" />
     <Compile Include="InterfaceControls\AccountInformationControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +116,12 @@
     </Compile>
     <Compile Include="Class\SteamAccount.cs" />
     <Compile Include="Class\SteamOwnedGames.cs" />
+    <Compile Include="InterfaceControls\AddSteamAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InterfaceControls\AddSteamAccount.Designer.cs">
+      <DependentUpon>AddSteamAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceControls\FreeGamesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +182,9 @@
     <Compile Include="Services\SteamWebAPI.cs" />
     <EmbeddedResource Include="InterfaceControls\AccountInformationControl.resx">
       <DependentUpon>AccountInformationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InterfaceControls\AddSteamAccount.resx">
+      <DependentUpon>AddSteamAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceControls\FreeGamesControl.resx">
       <DependentUpon>FreeGamesControl.cs</DependentUpon>
