@@ -8,9 +8,7 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Security.Principal;
 using FontAwesome.Sharp;
-using System.Windows.Media.Media3D;
 using SteamManager.InterfaceControls;
-using SteamWebAPI2.Models;
 
 namespace SteamManager
 {
@@ -21,6 +19,7 @@ namespace SteamManager
         public async Task FetchDataAndSetupInterfaceElements()
         {
             //FETCH ADDITIONAL DATA
+            //GET OWNED GAMES
             this.steamOwnedGames = await steamApiClient.GetOwnerGames(steamAccount);
         }
 
@@ -140,6 +139,7 @@ namespace SteamManager
 
             //ADD CONTROL
             flowLayoutPanelContent.Controls.Add(accountInformationControl);
+
         }
 
         private void btnLibraryCollection_Click(object sender, EventArgs e)
@@ -159,6 +159,7 @@ namespace SteamManager
 
             //ADD CONTROL
             flowLayoutPanelContent.Controls.Add(libraryCollectionControl);
+
         }
 
         private void btnGameInventory_Click(object sender, EventArgs e)
@@ -372,16 +373,17 @@ namespace SteamManager
                         steamAccountSecondary.GetSetSteamOwnedGames.Add(tempSteamOwnedGames);
 
                         //ADD PROFILE TO MAIN FRAME LAYOUT
+                        ToolTip tooltip = new ToolTip();
                         IconPictureBox iconPictureBox = new IconPictureBox();
                         iconPictureBox.Anchor = AnchorStyles.None;
                         iconPictureBox.BackColor = Color.Transparent;
-                        iconPictureBox.Cursor = Cursors.Hand;
                         iconPictureBox.IconColor = Color.White;
                         iconPictureBox.IconFont = IconFont.Auto;
                         iconPictureBox.IconSize = 36;
                         iconPictureBox.Margin = new Padding(0);
                         iconPictureBox.TabStop = false;
                         iconPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                        tooltip.SetToolTip(iconPictureBox, tempSteamAccount.getPersonName);
                         // -- IMAGE USERNAME
                         iconPictureBox.IconChar = IconChar.None;
                         WebRequest request = WebRequest.Create(tempSteamAccount.getAvatarFull);
@@ -405,6 +407,5 @@ namespace SteamManager
                 }
             }
         }
-
     }
 }

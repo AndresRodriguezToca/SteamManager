@@ -422,7 +422,7 @@ namespace SteamManager
             this.flowLayoutPanelContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelContent.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.flowLayoutPanelContent.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanelContent.Location = new System.Drawing.Point(285, 9);
             this.flowLayoutPanelContent.Name = "flowLayoutPanelContent";
             this.flowLayoutPanelContent.Size = new System.Drawing.Size(780, 623);
