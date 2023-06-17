@@ -93,11 +93,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.Size = new System.Drawing.Size(93, 29);
             this.label4.TabIndex = 0;
             this.label4.Text = "Library";
             // 
@@ -108,7 +108,7 @@
             this.cbxLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxLibrary.ForeColor = System.Drawing.Color.White;
             this.cbxLibrary.FormattingEnabled = true;
-            this.cbxLibrary.Location = new System.Drawing.Point(3, 23);
+            this.cbxLibrary.Location = new System.Drawing.Point(3, 39);
             this.cbxLibrary.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.cbxLibrary.Name = "cbxLibrary";
             this.cbxLibrary.Size = new System.Drawing.Size(200, 85);
@@ -131,11 +131,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(85, 29);
             this.label3.TabIndex = 0;
             this.label3.Text = "Genre";
             // 
@@ -146,7 +146,7 @@
             this.cbxGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxGenre.ForeColor = System.Drawing.Color.White;
             this.cbxGenre.FormattingEnabled = true;
-            this.cbxGenre.Location = new System.Drawing.Point(3, 23);
+            this.cbxGenre.Location = new System.Drawing.Point(3, 39);
             this.cbxGenre.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.cbxGenre.Name = "cbxGenre";
             this.cbxGenre.Size = new System.Drawing.Size(197, 68);
@@ -169,11 +169,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(123, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "PlayState";
             // 
@@ -189,7 +189,7 @@
             "Installed Locally",
             "Played",
             "Unplayed"});
-            this.cbxPlayState.Location = new System.Drawing.Point(3, 23);
+            this.cbxPlayState.Location = new System.Drawing.Point(3, 39);
             this.cbxPlayState.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.cbxPlayState.Name = "cbxPlayState";
             this.cbxPlayState.Size = new System.Drawing.Size(197, 85);
@@ -212,11 +212,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(100, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Players";
             // 
@@ -231,7 +231,7 @@
             "Single Player",
             "Multiplayer",
             "Cooperative"});
-            this.cbxPlayers.Location = new System.Drawing.Point(3, 23);
+            this.cbxPlayers.Location = new System.Drawing.Point(3, 39);
             this.cbxPlayers.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.cbxPlayers.Name = "cbxPlayers";
             this.cbxPlayers.Size = new System.Drawing.Size(197, 85);
