@@ -31,7 +31,7 @@ namespace SteamManager
 
         //CONTROLS
         AccountInformationControl accountInformationControl = new AccountInformationControl();
-        LibraryCollectionControl libraryCollectionControl = new LibraryCollectionControl();
+        LibraryCollectionControl libraryCollectionControl;
         GameInventoryControl gameInventoryControl = new GameInventoryControl();
         FriendsListControl friendsListControl = new FriendsListControl();
         MessagesControl messagesControl = new MessagesControl();
@@ -152,6 +152,9 @@ namespace SteamManager
 
             //ACTIVATE CLICKED NAVIGATION BUTTON
             selectNavigationButtons(btnLibraryCollection);
+
+            // INITIALIZE CONTROLLER (SEND DATA)
+            libraryCollectionControl = new LibraryCollectionControl(steamApiClient, steamAccount, steamOwnedGames, steamAccountSecondary);
 
             // SIZE
             libraryCollectionControl.Width = flowLayoutPanelContent.ClientSize.Width;

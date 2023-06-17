@@ -27,5 +27,17 @@ namespace SteamManager.Class
             get { return steamOwnedGames; }
             set { steamOwnedGames = value; }
         }
+
+        //FUNCTION TO GET ALL STEAM SECONDARY ACCOUNTS
+        public List<SteamAccount> GetAllSteamAccounts()
+        {
+            return steamAccounts;
+        }
+
+        //FUNCTION TO GET ALL STEAM OWNED SECONDARY GAMES
+        public List<SteamOwnedGames> GetAllSteamOwnedGames()
+        {
+            return steamOwnedGames;
+        }
     }
 }

@@ -59,7 +59,6 @@ namespace SteamManager.Services
                 var request = new HttpRequestMessage(HttpMethod.Get, $"{SteamApiBaseUrl}/{iSteamUser}/GetPlayerSummaries/v0002/?key={this.apiKey}&steamids={this.steamID}");
 
                 var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-                Console.WriteLine(response);
                 var responseContent = await response.Content.ReadAsStringAsync();
 
                 if (responseContent != null)
@@ -134,7 +133,6 @@ namespace SteamManager.Services
 
                     // Serialize the updated gameData back to JSON
                     responseContent = JsonConvert.SerializeObject(parsedData);
-                    Console.WriteLine(responseContent);
 
                     SteamOwnedGames steamOwnedGames = new SteamOwnedGames(responseContent);
                     return steamOwnedGames;
