@@ -6,21 +6,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using GoogleTranslateFreeApi;
+using SteamManager.InterfaceControls;
 
 namespace SteamManager
 {
-    // Define Genre class
-    public class Genre
-    {
-        public string Id { get; set; }
-        public string Description { get; set; }
-    }
 
     public partial class LibraryCollectionControl : UserControl
     {
         public LibraryCollectionControl(SteamApiClient steamApiClient, SteamAccount steamAccount, SteamOwnedGames steamOwnedGames, SteamAccountSecondary steamAccountSecondary)
         {
             InitializeComponent();
+            int rowIndex = 0;
+            int columnIndex = 0;
 
 
             //POP ACCOUNT LIBRARIES
@@ -37,9 +34,10 @@ namespace SteamManager
             // POP ALL POSSIBLE GENRES
             HashSet<string> uniqueGenres = new HashSet<string>();
 
-            // ADD GENDERS
+            // ADD GENDERS & GAMES TO COLLECTION
             foreach (SteamOwnedGames.Game game in steamOwnedGames.Games)
             {
+                //ADD GENRE
                 if (!string.IsNullOrEmpty(game.Genres))
                 {
                     var genres = JsonConvert.DeserializeObject<List<Genre>>(game.Genres);
@@ -51,14 +49,36 @@ namespace SteamManager
                         }
                     }
                 }
+
+                //ADD GAME
+                var gameInfoControl = new GameInfoControl();
+                gameInfoControl.SetGameInfo(game.Name, game.AppId.ToString(), GetAdditionalInfo(game));
+                gameInfoControl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
+                tableLayoutPanel1.Controls.Add(gameInfoControl, columnIndex, rowIndex);
+                //RESIZE FIRST ROW FROM LIBRARY COLLECTION
+                for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+                {
+                    tableLayoutPanel1.RowStyles[i] = new RowStyle(SizeType.Absolute, 150);
+                }
+                columnIndex++;
+
+                // CHECL IF COLUMN EXCEEDS THE LIMIT COLUMNS
+                if (columnIndex >= tableLayoutPanel1.ColumnCount)
+                {
+                    //SET BACK TO 0
+                    columnIndex = 0;
+                    //ADD A NEW ROW
+                    rowIndex++;
+                }
             }
 
-            // ADD ALL OTHER GENDERS (SECONDARY ACCOUNTS)
+            // ADD ALL OTHER GENDERS (SECONDARY ACCOUNTS) AND GAMES TO COLLECTION
             List<SteamOwnedGames> allGames = steamAccountSecondary.GetAllSteamOwnedGames();
             foreach (SteamOwnedGames ownedGames in allGames)
             {
                 foreach (SteamOwnedGames.Game game in ownedGames.Games)
                 {
+                    //ADD GENRE
                     if (!string.IsNullOrEmpty(game.Genres))
                     {
                         var genres = JsonConvert.DeserializeObject<List<Genre>>(game.Genres);
@@ -70,6 +90,7 @@ namespace SteamManager
                             }
                         }
                     }
+
                 }
             }
 
@@ -108,6 +129,21 @@ namespace SteamManager
             return text.All(c => c < 128);
         }
 
+        //GETS GAME INFORMATION
+        private string GetAdditionalInfo(SteamOwnedGames.Game game)
+        {
+            // Customize the additional information as you desire
+            // For example, concatenate the properties you want to display
+            return $"App ID: {game.AppId}, Playtime: {game.PlaytimeForever}, Genre: {game.Genres}, Publisher: {game.Publishers}";
+        }
+
+    }
+
+    // GENRE CLASS
+    public class Genre
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
     }
 
 }

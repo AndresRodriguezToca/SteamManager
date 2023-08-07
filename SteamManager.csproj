@@ -266,13 +266,21 @@
     <Compile Include="InterfaceControls\FriendsListControl.Designer.cs">
       <DependentUpon>FriendsListControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="InterfaceControls\GameInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InterfaceControls\GameInfoControl.Designer.cs">
+      <DependentUpon>GameInfoControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="InterfaceControls\GameInventoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="InterfaceControls\GameInventoryControl.Designer.cs">
       <DependentUpon>GameInventoryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="InterfaceControls\LibraryCollectionControl.cs" />
+    <Compile Include="InterfaceControls\LibraryCollectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="InterfaceControls\LibraryCollectionControl.Designer.cs">
       <DependentUpon>LibraryCollectionControl.cs</DependentUpon>
     </Compile>
@@ -321,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceControls\FriendsListControl.resx">
       <DependentUpon>FriendsListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InterfaceControls\GameInfoControl.resx">
+      <DependentUpon>GameInfoControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InterfaceControls\GameInventoryControl.resx">
       <DependentUpon>GameInventoryControl.cs</DependentUpon>
