@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Security.Principal;
 using FontAwesome.Sharp;
 using SteamManager.InterfaceControls;
+using System.Diagnostics;
 
 namespace SteamManager
 {
@@ -132,6 +133,10 @@ namespace SteamManager
 
             //ACTIVATE CLICKED NAVIGATION BUTTON
             selectNavigationButtons(btnAccountInformation);
+
+            //INTIALIZE ACCOUNT INFORMATION
+                // INITIALIZE CONTROLLER (SEND DATA)
+            accountInformationControl = new AccountInformationControl(steamApiClient, steamAccount, steamOwnedGames, steamAccountSecondary);
 
             // SIZE
             accountInformationControl.Width = flowLayoutPanelContent.ClientSize.Width;

@@ -135,6 +135,8 @@ namespace SteamManager.Services
                     responseContent = JsonConvert.SerializeObject(parsedData);
 
                     SteamOwnedGames steamOwnedGames = new SteamOwnedGames(responseContent);
+                    //PRINT ACCOUNT DEATILS
+                    Console.WriteLine(responseContent);
                     return steamOwnedGames;
                 }
                 else
