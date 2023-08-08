@@ -134,6 +134,10 @@ namespace SteamManager
             //ACTIVATE CLICKED NAVIGATION BUTTON
             selectNavigationButtons(btnAccountInformation);
 
+            //INTIALIZE ACCOUNT INFORMATION
+                // INITIALIZE CONTROLLER (SEND DATA)
+            accountInformationControl = new AccountInformationControl(steamApiClient, steamAccount, steamOwnedGames, steamAccountSecondary);
+
             // SIZE
             accountInformationControl.Width = flowLayoutPanelContent.ClientSize.Width;
             accountInformationControl.Height = flowLayoutPanelContent.ClientSize.Height;

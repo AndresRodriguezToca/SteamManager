@@ -62,7 +62,7 @@ namespace SteamManager
                 }
                 columnIndex++;
 
-                // CHECL IF COLUMN EXCEEDS THE LIMIT COLUMNS
+                // CHECK IF COLUMN EXCEEDS THE LIMIT COLUMNS
                 if (columnIndex >= tableLayoutPanel1.ColumnCount)
                 {
                     //SET BACK TO 0
@@ -90,6 +90,28 @@ namespace SteamManager
                             }
                         }
                     }
+
+                    //ADD GAME
+                    var gameInfoControl = new GameInfoControl();
+                    gameInfoControl.SetGameInfo(game.Name, game.AppId.ToString(), GetAdditionalInfo(game));
+                    gameInfoControl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
+                    tableLayoutPanel1.Controls.Add(gameInfoControl, columnIndex, rowIndex);
+                    //RESIZE FIRST ROW FROM LIBRARY COLLECTION
+                    for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+                    {
+                        tableLayoutPanel1.RowStyles[i] = new RowStyle(SizeType.Absolute, 150);
+                    }
+                    columnIndex++;
+
+                    // CHECK IF COLUMN EXCEEDS THE LIMIT COLUMNS
+                    if (columnIndex >= tableLayoutPanel1.ColumnCount)
+                    {
+                        //SET BACK TO 0
+                        columnIndex = 0;
+                        //ADD A NEW ROW
+                        rowIndex++;
+                    }
+
 
                 }
             }
