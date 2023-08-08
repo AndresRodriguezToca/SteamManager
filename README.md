@@ -10,12 +10,13 @@ Uses SDK & Steam Account ID.
 
 DASHBOARD (2023/08/07)
 ----------------------
-A set of option to help you manage multiple accounts. At the botton left of the interface you can see a main account and secondary accounts above.
+To your left is a set of options to help you manage multiple accounts.
+At the bottom left corner of the interface, you can see a main account and secondary accounts above.
 ![Screenshot 2023-08-07 225448](https://github.com/AndresRodriguezToca/SteamManager/assets/48394901/a443ab3d-13ed-4471-8e4d-65ca5ab7d30f)
 
 LIBRARY COLLECTION (2023/08/07)
 -------------------------------
-This is the Library Collection Interface. Basically compiles all the games from all accounts in one place, filters change according to games features, properties, genders, etc. 
+This is the Library Collection Interface. Basically compiles all the games from all accounts in one place, filters change according to games features, properties, genrers, etc. 
 ![Screenshot 2023-08-07 231141](https://github.com/AndresRodriguezToca/SteamManager/assets/48394901/60583690-ce7a-4779-9e87-1bf8a4f1d3c9)
 
 ROADMAP (DREAMS)
