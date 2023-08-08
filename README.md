@@ -3,6 +3,8 @@ Basically, an application capable of fetching data from Steam and seamlessly man
 This repo is under development (One developer handling both work and university while trying to make time to continue this project).
 If you want to support the development, feel free to reach out to me or create your own fork.
 
+<b style="color:red">UNDER DEVELOPMENT</b>
+
 LOGIN PAGE (2023/08/07)
 -----------------------
 Uses SDK & Steam Account ID.
