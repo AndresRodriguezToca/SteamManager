@@ -18,4 +18,14 @@ LIBRARY COLLECTION (2023/08/07)
 This is the Library Collection Interface. Basically compiles all the games from all accounts in one place, filters change according to games features, properties, genders, etc. 
 ![Screenshot 2023-08-07 231141](https://github.com/AndresRodriguezToca/SteamManager/assets/48394901/60583690-ce7a-4779-9e87-1bf8a4f1d3c9)
 
-
+ROADMAP (DREAMS)
+-------
+- [ ] Preview your Account Information for all accounts. Eventually, add the ability to send modifications to Steam (I haven't checked if Steam allows this).
+- [ ] Filter your games from multiple accounts in one place, and open the game you want with the Account that owns it.
+- [ ] Combined Wishlist from all Accounts
+- [ ] Combined Game Inventory from All Accounts Send, receive, and preview items between accounts.
+- [ ] Combined Friend List from all Accounts
+- [ ] Ability to send, receive, and see messages in one place for all the accounts
+- [ ] Steam News. This interface will just be like updates, news, and stuff coming from your library from your own games.
+- [ ] Steam Free Games In case you want free games available. 🥸
+- [ ] Steam Pricing A major feature, similar to SteamDB, is having an improved interface that allows you to compare prices for a specific game between accounts (Not other currencies or Countries). Per say, you may have an account in the US and an account in the UK. This interface will tell you where the game is cheaper. I will also want it to suggest places where you can purchase Steam Gift Cards at the best rates.
