@@ -1,0 +1,60 @@
+<?php
+    // LOAD GLOBALS
+    require_once("globals.php");
+
+    // CLASSES / COMPONETS
+    use SteamManager\Modules;
+
+    // CHECK IF ACCOUNT ALREADY SAVED
+        $env = parse_ini_file(__DIR__ . '/.env');
+    if (isset($env['main_account']) && isset($env['main_account_sdk'])) {
+        if ($env['main_account'] == $_POST["username"] && $env['main_account_sdk'] == $_POST["username_sdk"]) {
+            // LOAD CURRENT USER SETTINGS
+            loadAccountData();
+        } else {
+            // HANDLE REMEMBER ACCOUNT
+            if ($_POST["rememberAccount"] == 1) {
+                // OVERRIDE ACCOUNT INFORMATION
+                $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+                $dotenv->load();
+                $newEnvValues = [
+                    'remember_account' => '1',
+                    'main_account' => $_POST["username"],
+                    'main_account_sdk' => $_POST["username_sdk"]
+                ];
+                file_put_contents('.env', '');
+                foreach ($newEnvValues as $key => $value) {
+                    $newLine = "$key=$value" . PHP_EOL;
+                    file_put_contents('.env', $newLine, FILE_APPEND | LOCK_EX);
+                }
+            } else if($_POST["rememberAccount"] == 0) {
+                // LOAD NEW USER
+                loadAccountData();
+            }
+        }
+    } else {
+        // BACK TO LOGIN PAGE
+        header("Location: index.php");
+        exit();
+    }
+
+    function loadAccountData(){
+        echo 123;
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<?php
+			// INITIATE CLASS
+			$simplyHeader = new Modules\Header("Steam Manager - Login Page");
+			$simplyHeader->_includeSimplyMeta();
+			$simplyHeader->_includeSimplyCSS();
+			$simplyHeader->_includeGlobalsCSS();
+		?>
+	</head>
+    <body class="d-flex justify-content-center align-items-center" style="height: 100vh; background-image: url('library/assets/lake-4541454_1920.jpg');">
+        <!-- LOGIN PAGE -->
+        
+    </body>
+</html>

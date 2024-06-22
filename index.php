@@ -21,7 +21,7 @@
         <!-- LOGIN PAGE -->
         <div data-tilt>
             <div class="container-sm bc-steam rounded shadow-lg p-4 mb-5 bg-body-tertiary rounded" style="max-width: 500px;">
-                <form action="validate_login.php" method="post">
+                <form action="main_page.php" method="post">
                     <div class="mt-3 mb-3 text-center">
                         <i class="fas fa-brands fa-steam fa-5x"></i>
                     </div>
@@ -30,12 +30,12 @@
                     <hr>
                     <div data-aos="fade-right" class="input-group mb-3">
                         <label class="input-group-text" for="username"><i class="fas fa-user icon"></i></label>
-                        <input autocomplete="off" type="text" class="form-control" id="username" aria-describedby="username" placeholder="Account ID">
+                        <input autocomplete="off" type="text" class="form-control" name="username" id="username" aria-describedby="username" placeholder="Account ID">
                         <button class="btn btn-outline-primary" type="button" id="username_how_to" data-bs-toggle="modal" data-bs-target="#staticAccountID">Account ID?</button>
                     </div>
                     <div data-aos="fade-left" class="input-group">
                         <label class="input-group-text" for="username_sdk"><i class="fas fa-key icon"></i></label>
-                        <input autocomplete="off" type="text" class="form-control" id="username_sdk" aria-describedby="username_sdk" placeholder="Personal SDK">
+                        <input autocomplete="off" type="text" class="form-control" name="username_sdk" id="username_sdk" aria-describedby="username_sdk" placeholder="Personal SDK">
                         <button class="btn btn-outline-primary" type="button" id="username_sdk_how_to" data-bs-toggle="modal" data-bs-target="#staticPersonalSDK">Personal SDK?</button>
                     </div>
                     <div data-aos="fade-up" class="mt-3 mb-3 text-center">
@@ -112,13 +112,41 @@
                 </div>
             </div>
         </div>
+        <!-- REMEMBER MY ACCOUNT? -->
+        <div class="modal fade" id="rememberAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-6" id="staticBackdropLabel">Would you like Steam Manager to remember this account?</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <p>
+                            If "Yes", please note that the information will be saved locally on the application directory. Your information will <b>never</b> be stored by Steam Manager onto any external applications outside your machine.
+                        </p>
+                    </div>
+                    <div class="text-center mb-3 row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-sm btn-outline-primary m-2" data-bs-dismiss="modal" id="rememberAccount"><b>Yes, do remember</b></button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-sm btn-outline-primary m-2" data-bs-dismiss="modal" id="dontRememberAccount"><b>No, don't remember</b></button>
+                        </div>
+                        <div clas="col-12 text-center">
+                            <small><u>This will be asked only once per installation. You can change this later.</u></small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
         <?php
 			$simplyHeader->_includeSimplyJS();
 			$simplyHeader->_includeGlobalsJS();
         ?>
         <script>
             $(document).ready(function() {
-
+                // CHECK IF STEAM STORE PAGE IS ONLINE
                 function checkSteamPageStatus() {
                     var iframe = document.createElement('iframe');
                     iframe.style.display = 'none';
@@ -139,6 +167,78 @@
 
                 checkSteamPageStatus();
 
+                // INTERCEPT SUBMIT
+                $("form").on("submit", function(event) {
+                    event.preventDefault();
+                    if(!checkValue($("#username"))){
+                        alertify.set('notifier','position', 'top-right');
+                        alertify.error('<i class="fa-solid fa-circle-exclamation"></i> Account ID Missing / Invalid');
+                    } else if(!checkValue($("#username_sdk"))){
+                        alertify.set('notifier','position', 'top-right');
+                        alertify.error('<i class="fa-solid fa-circle-exclamation"></i> Personal SDK Missing / Invalid');
+                    } else {
+                        // CHECK IF ACCOUNT NEEDS REMEMBER
+                        let askRememberAccount = <?php  
+                            if (file_exists(__DIR__ . '/.env')) {
+                                $env = parse_ini_file(__DIR__ . '/.env');
+                                if (isset($env['remember_account'])) {
+                                    echo json_encode($env['remember_account']);
+                                } else {
+                                    echo json_encode("Missing");
+                                }
+                            } else {
+                                file_put_contents(__DIR__ . '/.env', "remember_account=Missing");
+                                echo json_encode("Missing");
+                            }
+                        ?>;
+
+                        // IF MISSING
+                        if(askRememberAccount == "Missing"){
+                            $("#rememberAccount").modal('show');
+                        } else {
+                            loginAccount(askRememberAccount);
+                        }
+                    }
+                });
+
+                // REMEMBER ACCOUNT TRIGGERS
+                $("#rememberAccount").on("click", function(){
+                    loginAccount(1)
+                });
+                $("#dontRememberAccount").on("click", function(){
+                    loginAccount(0)
+                });
+
+                // LOGIN ACCOUNT
+                function loginAccount(rememberAccount){
+                    // VALIDATE SDK
+                    $.ajax({
+                        url: '<?php echo $GLOBALS['webroutes']; ?>/account/get_validate_sdk.php',
+                        type: 'GET',
+                        data: {
+                            username: $("#username").val(),
+                            username_sdk: $("#username_sdk").val()
+                        },
+                        success: function(response) {
+                            if(response.status == "success"){
+                                $("form").attr("action", "main_page.php").attr("method", "post");
+                                $("<input>").attr({
+                                    type: "hidden",
+                                    name: "rememberAccount",
+                                    value: rememberAccount
+                                }).appendTo("form");
+                                $("form").unbind('submit').submit();
+                            } else {
+                                alertify.set('notifier','position', 'top-right');
+                                alertify.error("<i class='fa-solid fa-circle-exclamation'></i> SDK Validation Failed.<br>" + response.message);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            alertify.set('notifier','position', 'top-right');
+                            alertify.error("<i class='fa-solid fa-circle-exclamation'></i> Couldn't Access Account.<br>" + error);
+                        }
+                    });
+                }
             });
         </script>
     </body>
