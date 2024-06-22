@@ -1,0 +1,12 @@
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.bc-steam{
+    color:white;
+    background: linear-gradient(#0e1118, #0e1118);
+}
+
+.text-steam-color{
+    color:#1e90ff;
+}

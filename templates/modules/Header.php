@@ -48,8 +48,9 @@ class Header{
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-            <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css" type="text/css">
+            <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/@fortawesome/fontawesome-free/css/all.css" type="text/css">
             <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+            <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/aos/dist/aos.css" type="text/css">
         ';
 
         // ADDITIONALS CSS
@@ -63,6 +64,7 @@ class Header{
             <meta http-equiv="content-type" content="text/html; charset=UTF-8">
             <meta charset="utf-8">
             <title>'. $this->pageTitle .'</title>
+            <meta name="referrer" content="strict-origin" />
             <meta name="generator" content="Steam Manager" />
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         ';
@@ -72,8 +74,11 @@ class Header{
      */
     private function _generateJS(): void{
         $this->compileJS = '
-            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
+            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/jquery/dist/jquery.js"></script>
+            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
             <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/aos/dist/aos.js"></script>
+            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/tilt.js/src/tilt.jquery.js"></script>
         ';
         // ADDITIONALS JS
         $this->compileJS .= $this->compileJSAdditional;

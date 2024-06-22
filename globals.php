@@ -1,7 +1,7 @@
 <?php
 
 // GLOBAL VARIABLES
-$GLOBALS['webroot'] = __DIR__;
+$GLOBALS['webroot'] = "./";
 $GLOBALS['weblibrary'] = $GLOBALS['webroot'] . "/library/";
 $GLOBALS['webtemplates'] = $GLOBALS['webroot'] . "/templates/";
 $GLOBALS['webnodes'] = $GLOBALS['webroot'] . "/library/node_modules";
