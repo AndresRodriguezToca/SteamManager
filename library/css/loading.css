@@ -1,0 +1,43 @@
+.loader{
+    width: 40px;
+    aspect-ratio: 1;
+    --c:no-repeat linear-gradient(#1e90ff 0 0);
+    background: 
+      var(--c) 0    0,
+      var(--c) 0    100%, 
+      var(--c) 50%  0,  
+      var(--c) 50%  100%, 
+      var(--c) 100% 0, 
+      var(--c) 100% 100%;
+    background-size: 8px 50%;
+    animation: l7-0 1s infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .loader:before {
+    content: "\f1b6"; /* Steam icon in font awesome */
+    font-family: "Font Awesome 5 Brands";
+    position: absolute;
+    width: 40px; /* Adjusted to match the loader size */
+    height: 40px; /* Adjusted to match the loader size */
+    top: 8px; /* Adjusted to center the icon */
+    left: 0; /* Adjusted to center the icon */
+    animation: inherit;
+    animation-name: l7-1;
+  }
+  
+  @keyframes l7-0 {
+   16.67% {background-size:8px 30%, 8px 30%, 8px 50%, 8px 50%, 8px 50%, 8px 50%}
+   33.33% {background-size:8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 50%, 8px 50%}
+   50%    {background-size:8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 30%, 8px 30%}
+   66.67% {background-size:8px 50%, 8px 50%, 8px 30%, 8px 30%, 8px 30%, 8px 30%}
+   83.33% {background-size:8px 50%, 8px 50%, 8px 50%, 8px 50%, 8px 30%, 8px 30%}
+  }
+  
+  @keyframes l7-1 {
+   20%  {left:0px}
+   40%  {left:calc(50%  - 4px)}
+   60%  {left:calc(100% - 8px)}
+   80%,
+   100% {left:100%}
+  }

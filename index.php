@@ -5,6 +5,10 @@
     // CLASSES / COMPONETS
     use SteamManager\Modules;
 
+    // ENV VARIABLES
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->safeLoad();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +34,20 @@
                     <hr>
                     <div data-aos="fade-right" class="input-group mb-3">
                         <label class="input-group-text" for="username"><i class="fas fa-user icon"></i></label>
-                        <input autocomplete="off" type="text" class="form-control" name="username" id="username" aria-describedby="username" placeholder="Account ID">
+                        <input autocomplete="off" type="text" class="form-control" name="username" id="username" aria-describedby="username" placeholder="Account ID"<?php
+                            if(isset($_ENV["main_account"])){
+                                echo " value='" . $_ENV["main_account"] . "'";
+                            }
+                        ?>>
                         <button class="btn btn-outline-primary" type="button" id="username_how_to" data-bs-toggle="modal" data-bs-target="#staticAccountID">Account ID?</button>
                     </div>
                     <div data-aos="fade-left" class="input-group">
                         <label class="input-group-text" for="username_sdk"><i class="fas fa-key icon"></i></label>
-                        <input autocomplete="off" type="text" class="form-control" name="username_sdk" id="username_sdk" aria-describedby="username_sdk" placeholder="Personal SDK">
+                        <input autocomplete="off" type="text" class="form-control" name="username_sdk" id="username_sdk" aria-describedby="username_sdk" placeholder="Personal SDK"<?php
+                        if(isset($_ENV["main_account_sdk"])){
+                            echo " value='" . $_ENV["main_account_sdk"] . "'";
+                        }
+                        ?>>
                         <button class="btn btn-outline-primary" type="button" id="username_sdk_how_to" data-bs-toggle="modal" data-bs-target="#staticPersonalSDK">Personal SDK?</button>
                     </div>
                     <div data-aos="fade-up" class="mt-3 mb-3 text-center">
@@ -179,17 +191,7 @@
                     } else {
                         // CHECK IF ACCOUNT NEEDS REMEMBER
                         let askRememberAccount = <?php  
-                            if (file_exists(__DIR__ . '/.env')) {
-                                $env = parse_ini_file(__DIR__ . '/.env');
-                                if (isset($env['remember_account'])) {
-                                    echo json_encode($env['remember_account']);
-                                } else {
-                                    echo json_encode("Missing");
-                                }
-                            } else {
-                                file_put_contents(__DIR__ . '/.env', "remember_account=Missing");
-                                echo json_encode("Missing");
-                            }
+                            echo json_encode($_ENV["remember_account"] ?? "Missing");
                         ?>;
 
                         // IF MISSING

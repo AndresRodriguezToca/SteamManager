@@ -27,9 +27,11 @@
                     $newLine = "$key=$value" . PHP_EOL;
                     file_put_contents('.env', $newLine, FILE_APPEND | LOCK_EX);
                 }
-            } else if($_POST["rememberAccount"] == 0) {
                 // LOAD NEW USER
                 loadAccountData();
+            } else if($_POST["rememberAccount"] == 0) {
+                // LOAD NEW USER
+                loadAccountData($_POST["username"]);
             }
         }
     } else {
@@ -38,8 +40,15 @@
         exit();
     }
 
-    function loadAccountData(){
-        echo 123;
+    function loadAccountData($username = null){
+        // LOAD SAVED ACCOUNT
+        if($username != null){
+
+        } 
+        // LOAD TEMPORARY ACCOUNT
+        else {
+
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -48,13 +57,28 @@
 		<?php
 			// INITIATE CLASS
 			$simplyHeader = new Modules\Header("Steam Manager - Login Page");
+            $simplyHeader->includeAdditionalCSS($GLOBALS["webroot"] . "/library/css/loading.css");
 			$simplyHeader->_includeSimplyMeta();
 			$simplyHeader->_includeSimplyCSS();
 			$simplyHeader->_includeGlobalsCSS();
 		?>
 	</head>
-    <body class="d-flex justify-content-center align-items-center" style="height: 100vh; background-image: url('library/assets/lake-4541454_1920.jpg');">
-        <!-- LOGIN PAGE -->
+    <body class="bc-steam">
+        <div class="container">
+            <!-- LOADING ANIMATION -->
+            <div id="loadingContainer">
+                <div data-aos="zoom-in-up" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div class="loader"></div>
+                    <p data-aos="zoom-in-up" id="loadingMessage">Loading Account Information...</p>
+                </div>
+            </div>
+        </div>
         
+        
+        <!-- LOGIN PAGE -->
+        <?php
+			$simplyHeader->_includeSimplyJS();
+			$simplyHeader->_includeGlobalsJS();
+        ?>
     </body>
 </html>
