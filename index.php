@@ -26,6 +26,7 @@
                         <i class="fas fa-brands fa-steam fa-5x"></i>
                     </div>
                     <h2 class="text-center text-steam-color">Steam Manager</h2>
+                    <p class="text-center"><i class="fa-regular fa-circle fa-beat-fade text-warning" id="steamOnlineIcon"></i> <span id="steamStatusMessage">Checking if Steam Online...</span></p>
                     <hr>
                     <div data-aos="fade-right" class="input-group mb-3">
                         <label class="input-group-text" for="username"><i class="fas fa-user icon"></i></label>
@@ -115,5 +116,30 @@
 			$simplyHeader->_includeSimplyJS();
 			$simplyHeader->_includeGlobalsJS();
         ?>
+        <script>
+            $(document).ready(function() {
+
+                function checkSteamPageStatus() {
+                    var iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = 'https://store.steampowered.com/';
+
+                    iframe.onload = function() {
+                        $("#steamOnlineIcon").removeClass("text-warning").addClass("text-success");
+                        $("#steamStatusMessage").text("Steam Online");
+                    };
+
+                    iframe.onerror = function() {
+                        $("#steamOnlineIcon").removeClass("text-warning").addClass("text-danger");
+                        $("#steamStatusMessage").text("Offline or Couldn't Connect to Steam");
+                    };
+
+                    document.body.appendChild(iframe);
+                }
+
+                checkSteamPageStatus();
+
+            });
+        </script>
     </body>
 </html>
