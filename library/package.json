@@ -1,0 +1,28 @@
+{
+  "name": "steam_manager",
+  "version": "1.0.0",
+  "description": "An application to combine Steam accounts in one place.",
+  "main": "../index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresRodriguezToca/SteamManager.git"
+  },
+  "keywords": [
+    "Steam",
+    "Manager"
+  ],
+  "author": "Andres Rodriguez",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/AndresRodriguezToca/SteamManager/issues"
+  },
+  "homepage": "https://github.com/AndresRodriguezToca/SteamManager#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "fontawesome_6.5.2",
+    "bootstrap": "bootstrap_5.3.3",
+    "moment": "moment_2.30.1"
+  }
+}
