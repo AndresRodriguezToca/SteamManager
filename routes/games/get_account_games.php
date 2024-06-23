@@ -29,6 +29,19 @@ function validateSteamCredentials($username, $usernameSdk, &$response) {
     // VALIDATE
     if (isset($response['response']['games']) && count($response['response']['games']) > 0) {
         $isValid = true;
+        $folderName = $username;
+        $folderPath = __DIR__ . '/../../accounts/' . $folderName;
+        if (!file_exists($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
+
+        if (file_exists($folderPath)) {
+            $gamesJson = json_encode($response);
+            file_put_contents($folderPath . '/games.json', $gamesJson);
+        } else {
+            $gamesJson = json_encode($response);
+            file_put_contents($folderPath . '/games.json', $gamesJson);
+        }
     }
 
     return $isValid;

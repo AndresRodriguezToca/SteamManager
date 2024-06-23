@@ -1,12 +1,7 @@
 $(document).ready(async function() {
-    const accountsData = [];
 
     for (const SteamID of accountsID) {
         try {
-            const accountData = {
-                id: SteamID,
-                games: []
-            };
 
             const response = await $.ajax({
                 url: rootValidateSDK,
@@ -49,8 +44,6 @@ $(document).ready(async function() {
                         const gamesCount = gamesResponse.data.response.game_count;
                         const badge = `<span class="position-absolute translate-middle badge rounded-pill bg-primary">${gamesCount} <i class="fa-solid fa-gamepad"></i></span>`;
                         $(`#${SteamID}_image_loader`).append(badge);
-
-                        accountData.games = gamesResponse.data.response.games;
                     } else {
                         alertify.set('notifier', 'position', 'top-right');
                         alertify.error("<i class='fa-solid fa-circle-exclamation'></i> Failed to fetch games for ${accountName}.<br>" + gamesResponse.message);
@@ -63,8 +56,6 @@ $(document).ready(async function() {
                 alertify.set('notifier', 'position', 'top-right');
                 alertify.error("<i class='fa-solid fa-circle-exclamation'></i> SDK Validation Failed.<br>" + response.message);
             }
-
-            accountsData.push(accountData);
         } catch (error) {
             alertify.set('notifier', 'position', 'top-right');
             alertify.error("<i class='fa-solid fa-circle-exclamation'></i> Couldn't Access Account.<br>" + error);
@@ -75,7 +66,7 @@ $(document).ready(async function() {
     await sleep(500);
 
     // REDIRECT USER TO MAIN PAGE
-    window.location.href = `main_page.php`;
+    // window.location.href = `main_page.php`;
 
     // ANIMATION TO CHANGE THE LOADER TEXT
     async function updateLoadingMessage(message) {

@@ -1,7 +1,6 @@
 <?php
 $username = $_GET['username'] ?? null;
 $usernameSdk = $_GET['username_sdk'] ?? null;
-$returnData = $_GET['return'] ?? false;
 $response = [];
 
 if ($username === null || $usernameSdk === null) {
@@ -14,7 +13,7 @@ if ($username === null || $usernameSdk === null) {
 function validateSteamCredentials($username, $usernameSdk, &$response) {
     $isValid = false;
 
-    $url = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={$usernameSdk}&steamids={$username}";
+    $url = "https://api.steampowered.com/ISteamUser/GetFriendList/v1/?key={$usernameSdk}&steamid={$username}";
 
     // cURL CALL
     $ch = curl_init();
@@ -27,21 +26,20 @@ function validateSteamCredentials($username, $usernameSdk, &$response) {
     $response = json_decode($output, true);
 
     // VALIDATE
-    if (isset($response['response']['players']) && count($response['response']['players']) >= 0 && isset($response['response']['players'][0]) && isset($response['response']['players'][0]["steamid"])) {
+    if (isset($response['friendslist']['friends']) && count($response['friendslist']['friends']) > 0) {
         $isValid = true;
-
-        $folderName = $_GET['username'];
+        $folderName = $username;
         $folderPath = __DIR__ . '/../../accounts/' . $folderName;
         if (!file_exists($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
         if (file_exists($folderPath)) {
-            $accountJson = json_encode($response);
-            file_put_contents($folderPath . '/account.json', $accountJson);
+            $friendsJson = json_encode($response);
+            file_put_contents($folderPath . '/friends.json', $friendsJson);
         } else {
-            $accountJson = json_encode($response);
-            file_put_contents($folderPath . '/account.json', $accountJson);
+            $friendsJson = json_encode($response);
+            file_put_contents($folderPath . '/friends.json', $friendsJson);
         }
     }
 
@@ -51,15 +49,12 @@ function validateSteamCredentials($username, $usernameSdk, &$response) {
 $responseData = [];
 if (validateSteamCredentials($username, $usernameSdk, $response)) {
     http_response_code(200);
-    if($returnData != false){
-        $responseData = ['status' => 'success', 'message' => 'Steam Account & SDK Valid', 'data' => $response];
-    } else {
-        $responseData = ['status' => 'success', 'message' => 'Steam Account & SDK Valid'];
-    }
+    $responseData = ['status' => 'success', 'message' => 'Steam Account Friends Valid', 'data' => $response];
 } else {
     http_response_code(400);
-    $responseData = ['status' => 'error', 'message' => 'Steam Account or SDK Invalid'];
+    $responseData = ['status' => 'error', 'message' => 'Steam Account Friends Invalid'];
 }
 
 header('Content-Type: application/json');
 echo json_encode($responseData);
+?>
