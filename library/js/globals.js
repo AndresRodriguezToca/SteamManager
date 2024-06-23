@@ -32,3 +32,27 @@ function checkValue(fieldID){
         return true;
     }
 }
+
+$('.js-glare').tilt({
+    glare: true,
+    maxGlare: .5
+})
+
+$('.js-scale').tilt({
+    scale: 1.2
+})
+
+// CONSTANTLY CHECK FOR BROWSER INSPECTOR
+let errorDisplayed = false;
+setInterval(function() {
+    if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+        if (!errorDisplayed) {
+            console.info("%cSteam Manager trusts users to not use the Inspector. Keep in mind that wherever you do from this point could potentially break the software.", "color: red; font-size: 16px; font-weight: bold;");
+            errorDisplayed = true;
+            setTimeout(function() {
+                errorDisplayed = false;
+            }, 300000);
+        }
+    }
+}, 1000);
+

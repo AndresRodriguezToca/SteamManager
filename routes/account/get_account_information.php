@@ -1,8 +1,9 @@
 <?php
-// Retrieve GET parameters
 $username = $_GET['username'] ?? null;
 $usernameSdk = $_GET['username_sdk'] ?? null;
-// Validate parameters
+$returnData = $_GET['return'] ?? false;
+$response = [];
+
 if ($username === null || $usernameSdk === null) {
     http_response_code(400);
     echo "Missing required parameters.";
@@ -10,7 +11,7 @@ if ($username === null || $usernameSdk === null) {
 }
 
 // VALIDATE STEAM CREDENTIALS AND SDK
-function validateSteamCredentials($username, $usernameSdk) {
+function validateSteamCredentials($username, $usernameSdk, &$response) {
     $isValid = false;
 
     $url = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={$usernameSdk}&steamids={$username}";
@@ -33,11 +34,14 @@ function validateSteamCredentials($username, $usernameSdk) {
     return $isValid;
 }
 
-// Validate credentials and send response as JSON
 $responseData = [];
-if (validateSteamCredentials($username, $usernameSdk)) {
+if (validateSteamCredentials($username, $usernameSdk, $response)) {
     http_response_code(200);
-    $responseData = ['status' => 'success', 'message' => 'Steam Account & SDK Valid'];
+    if($returnData != false){
+        $responseData = ['status' => 'success', 'message' => 'Steam Account & SDK Valid', 'data' => $response];
+    } else {
+        $responseData = ['status' => 'success', 'message' => 'Steam Account & SDK Valid'];
+    }
 } else {
     http_response_code(400);
     $responseData = ['status' => 'error', 'message' => 'Steam Account or SDK Invalid'];

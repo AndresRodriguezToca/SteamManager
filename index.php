@@ -24,10 +24,10 @@
     <body class="d-flex justify-content-center align-items-center" style="height: 100vh; background-image: url('library/assets/lake-4541454_1920.jpg');">
         <!-- LOGIN PAGE -->
         <div data-tilt>
-            <div class="container-sm bc-steam rounded shadow-lg p-4 mb-5 bg-body-tertiary rounded" style="max-width: 500px;">
-                <form action="main_page.php" method="post">
+            <div class="container-sm bc-steam rounded shadow-lg p-4 bg-body-tertiary rounded">
+                <form action="compiler_page.php" method="post">
                     <div class="mt-3 mb-3 text-center">
-                        <i class="fas fa-brands fa-steam fa-5x"></i>
+                        <i class="fas fa-brands fa-steam fa-5x js-tilt tilt-child shadow-lg"></i>
                     </div>
                     <h2 class="text-center text-steam-color">Steam Manager</h2>
                     <p class="text-center"><i class="fa-regular fa-circle fa-beat-fade text-warning" id="steamOnlineIcon"></i> <span id="steamStatusMessage">Checking if Steam Online...</span></p>
@@ -78,9 +78,9 @@
                                 <ol>
                                     <li>Click your Steam Profile</li>
                                     <li>Choose from the dropdown "Account Details"</li>
-                                    <img class="img-fluid" src="<?php echo $GLOBALS["webroot"] ?>/library/assets/Screenshot 2024-06-22 141628.png" alt="Steam Profile Screenshot">
+                                    <img class="img-fluid" src="<?php echo $GLOBALS["weblibrary"] ?>/assets/Screenshot 2024-06-22 141628.png" alt="Steam Profile Screenshot">
                                     <li>Just below your name you should be able to see in gray "Steam ID: [Number]"</li>
-                                    <img class="img-fluid" src="<?php echo $GLOBALS["webroot"] ?>/library/assets/Screenshot 2024-06-22 142107.png" alt="Steam Account Details Screenshot">
+                                    <img class="img-fluid" src="<?php echo $GLOBALS["weblibrary"] ?>/assets/Screenshot 2024-06-22 142107.png" alt="Steam Account Details Screenshot">
                                 </ol>
                             </p>
                         </div>
@@ -153,95 +153,16 @@
             </div>
         </div>
         <?php
+            $simplyHeader->includeAdditionalJS($GLOBALS['weblibrary'] . '/js/index.js');
 			$simplyHeader->_includeSimplyJS();
 			$simplyHeader->_includeGlobalsJS();
         ?>
         <script>
-            $(document).ready(function() {
-                // CHECK IF STEAM STORE PAGE IS ONLINE
-                function checkSteamPageStatus() {
-                    var iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = 'https://store.steampowered.com/';
-
-                    iframe.onload = function() {
-                        $("#steamOnlineIcon").removeClass("text-warning").addClass("text-success");
-                        $("#steamStatusMessage").text("Steam Online");
-                    };
-
-                    iframe.onerror = function() {
-                        $("#steamOnlineIcon").removeClass("text-warning").addClass("text-danger");
-                        $("#steamStatusMessage").text("Offline or Couldn't Connect to Steam");
-                    };
-
-                    document.body.appendChild(iframe);
-                }
-
-                checkSteamPageStatus();
-
-                // INTERCEPT SUBMIT
-                $("form").on("submit", function(event) {
-                    event.preventDefault();
-                    if(!checkValue($("#username"))){
-                        alertify.set('notifier','position', 'top-right');
-                        alertify.error('<i class="fa-solid fa-circle-exclamation"></i> Account ID Missing / Invalid');
-                    } else if(!checkValue($("#username_sdk"))){
-                        alertify.set('notifier','position', 'top-right');
-                        alertify.error('<i class="fa-solid fa-circle-exclamation"></i> Personal SDK Missing / Invalid');
-                    } else {
-                        // CHECK IF ACCOUNT NEEDS REMEMBER
-                        let askRememberAccount = <?php  
-                            echo json_encode($_ENV["remember_account"] ?? "Missing");
-                        ?>;
-
-                        // IF MISSING
-                        if(askRememberAccount == "Missing"){
-                            $("#rememberAccount").modal('show');
-                        } else {
-                            loginAccount(askRememberAccount);
-                        }
-                    }
-                });
-
-                // REMEMBER ACCOUNT TRIGGERS
-                $("#rememberAccount").on("click", function(){
-                    loginAccount(1)
-                });
-                $("#dontRememberAccount").on("click", function(){
-                    loginAccount(0)
-                });
-
-                // LOGIN ACCOUNT
-                function loginAccount(rememberAccount){
-                    // VALIDATE SDK
-                    $.ajax({
-                        url: '<?php echo $GLOBALS['webroutes']; ?>/account/get_validate_sdk.php',
-                        type: 'GET',
-                        data: {
-                            username: $("#username").val(),
-                            username_sdk: $("#username_sdk").val()
-                        },
-                        success: function(response) {
-                            if(response.status == "success"){
-                                $("form").attr("action", "main_page.php").attr("method", "post");
-                                $("<input>").attr({
-                                    type: "hidden",
-                                    name: "rememberAccount",
-                                    value: rememberAccount
-                                }).appendTo("form");
-                                $("form").unbind('submit').submit();
-                            } else {
-                                alertify.set('notifier','position', 'top-right');
-                                alertify.error("<i class='fa-solid fa-circle-exclamation'></i> SDK Validation Failed.<br>" + response.message);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            alertify.set('notifier','position', 'top-right');
-                            alertify.error("<i class='fa-solid fa-circle-exclamation'></i> Couldn't Access Account.<br>" + error);
-                        }
-                    });
-                }
-            });
+            // CHECK IF ACCOUNT NEEDS REMEMBER
+            let askRememberAccount = <?php  
+                echo json_encode($_ENV["remember_account"] ?? "Missing");
+            ?>;
+            let rootValidateSDK = '<?php echo $GLOBALS['webroutes']; ?>/account/get_account_information.php';
         </script>
     </body>
 </html>

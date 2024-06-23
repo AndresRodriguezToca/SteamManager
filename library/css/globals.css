@@ -27,3 +27,11 @@
     animation: shake 2.0s infinite;
     border: 2px solid #dc3545;
 }
+
+.tilt-parent{
+    transform-style: preserve-3d;
+}
+
+.tilt-child{
+    transform: translateZ(80px);
+}

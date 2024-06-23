@@ -1,4 +1,11 @@
 <?php
+    /**
+     * @package   Steam Manager (Modules)
+     * @author    Andres Rodriguez Toca <rodrigueztoca21@gmail.com>
+     */
+
+    namespace SteamManager\Components;
+    
     class Account {
         private $steamid;
         private $communityvisibilitystate;
