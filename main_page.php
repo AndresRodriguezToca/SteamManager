@@ -11,7 +11,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html class="bc-steam" lang="en">
     <head>
 		<?php
 			// INITIATE CLASS
@@ -22,6 +22,8 @@
 		?>
 	</head>
     <body>
+
+
         <?php
 			$simplyHeader->_includeSimplyJS();
 			$simplyHeader->_includeGlobalsJS();

@@ -67,6 +67,8 @@
             // GENERAL VARIABLES
             let rootValidateSDK = '<?php echo $GLOBALS['webroutes']; ?>/account/get_account_information.php';
             let rootFetchGames = '<?php echo $GLOBALS['webroutes']; ?>/games/get_account_games.php';
+            let rootFetchFriends = '<?php echo $GLOBALS['webroutes']; ?>/friends/get_account_friends.php';
+            let rootFetchWishlist = '<?php echo $GLOBALS['webroutes']; ?>/wishlist/get_account_wishlist.php';
             let username = '<?php echo $_POST["username"]; ?>';
             let username_sdk = '<?php echo $_POST["username_sdk"]; ?>';
             // ACCOUNT(S) TO FETCH
