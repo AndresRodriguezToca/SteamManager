@@ -39,8 +39,15 @@ $('.js-glare').tilt({
 })
 
 $('.js-scale').tilt({
-    scale: 1.2
+    scale: 1.3
 })
+
+$('.js-glare-scale').tilt({
+    scale: 1.3,
+    glare: true,
+    maxGlare: 0.8
+});
+
 
 // CONSTANTLY CHECK FOR BROWSER INSPECTOR
 let errorDisplayed = false;

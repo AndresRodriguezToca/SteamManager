@@ -11,7 +11,7 @@
 
 ?>
 <!DOCTYPE html>
-<html class="bc-steam" lang="en">
+<html lang="en">
     <head>
 		<?php
 			// INITIATE CLASS
@@ -29,15 +29,17 @@
         ?>
         <!-- CONTENT OF SIDEBARS-->
         <div class="fixed-container">
-            <div class="container">
-                <div class="row">
-                    <!-- ACCOUNT INFORMATION -->
-                    <div class="col-12">
-                        <?php
-                            include_once($GLOBALS['webtemplates'] . "/snippets/account_information.php");
-                        ?>
-                    </div>
-                </div>
+            <!-- ACCOUNT INFORMATION -->
+            <div class="collapse">
+                <?php
+                    include_once($GLOBALS['webtemplates'] . "/snippets/account_information.php");
+                ?>
+            </div>
+            <!-- GAMES COLLECTION -->
+            <div class="collapse show">
+                <?php
+                    include_once($GLOBALS['webtemplates'] . "/snippets/games_collection.php");
+                ?>
             </div>
         </div>
 
