@@ -95,3 +95,25 @@ body {
     background-color: #0d6efd;
     color: white;
 }
+
+.sidebar-collapse{
+    position: absolute;
+    right: -10px;
+    bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+.sidebar-collapse:hover{
+    cursor: pointer;
+    transform: translateX(-5px); /* Modified to move in the opposite direction */
+}
+.sidebar-expand{
+    position: absolute;
+    right: -30px;
+    bottom: 20px;
+    color: #0e1118;
+    transition: transform 0.3s ease-in-out;
+}
+.sidebar-expand:hover{
+    cursor: pointer;
+    transform: translateX(5px);
+}

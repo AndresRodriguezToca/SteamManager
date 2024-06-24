@@ -30,6 +30,7 @@
 
 
         <?php
+        
             $simplyHeader->includeAdditionalJS($GLOBALS['weblibrary'] . '/js/sidebar.js');
 			$simplyHeader->_includeSimplyJS();
 			$simplyHeader->_includeGlobalsJS();
