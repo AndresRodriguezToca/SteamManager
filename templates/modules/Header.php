@@ -52,6 +52,7 @@ class Header{
             <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
             <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/aos/dist/aos.css" type="text/css">
             <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/alertifyjs/build/css/alertify.css" type="text/css">
+            <link rel=stylesheet href="' . $GLOBALS['webroot'] .'/library/node_modules/tippy.js/dist/backdrop.css" type="text/css">
         ';
 
         // ADDITIONALS CSS
@@ -81,7 +82,8 @@ class Header{
             <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/aos/dist/aos.js"></script>
             <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/tilt.js/src/tilt.jquery.js"></script>
             <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/alertifyjs/build/alertify.js"></script>
-            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/tippy.js/dist/tippy-bundle.umd.js"></script>
+            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/@popperjs/core/dist/umd/popper.js"></script>
+            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/tippy.js/dist/tippy-bundle.umd.min.js"></script>
         ';
         // ADDITIONALS JS
         $this->compileJS .= $this->compileJSAdditional;

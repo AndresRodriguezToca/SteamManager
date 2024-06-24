@@ -25,6 +25,16 @@ aside a:hover {
     border-bottom-left-radius: 20px;
 }
 
+aside a[active] {
+    color: #3f5efb;
+    background: #fff;
+    outline: none;
+    position: relative;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
 aside a i {
     margin-right: 5px;
 }
@@ -79,4 +89,9 @@ body {
     border-radius: 50%;
     top: 5px;
     right: 5px;
+}
+
+.tippy-box[data-theme~='steam'] {
+    background-color: #0d6efd;
+    color: white;
 }
