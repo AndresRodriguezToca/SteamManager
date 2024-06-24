@@ -4,8 +4,38 @@ $repoOwner = 'AndresRodriguezToca';
 $repoName = 'SteamManager';
 $currentBranch = 'development_web_base';
 
+// ENV VARIABLES
+function loadEnv()
+{
+    $envFile = __DIR__ . '/.env';
+    if (!file_exists($envFile)) {
+        throw new Exception('.env file not found');
+    }
+
+    $env = file_get_contents($envFile);
+    $lines = explode("\n", $env);
+
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if (!$line || strpos($line, '#') === 0) {
+            continue;
+        }
+
+        list($key, $value) = explode('=', $line, 2);
+        $key = trim($key);
+        $value = trim($value);
+
+        if (!array_key_exists($key, $_SERVER) && !array_key_exists($key, $_ENV)) {
+            putenv("$key=$value");
+            $_ENV[$key] = $value;
+            $_SERVER[$key] = $value;
+        }
+    }
+}
+loadEnv();
+
 // GitHub personal access token with 'repo' scope
-$accessToken = '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';
+$accessToken = getenv('GITHUB_ACCESS_TOKEN');
 
 // GitHub API endpoint to fetch branches
 $apiUrl = "https://api.github.com/repos/$repoOwner/$repoName/branches";
