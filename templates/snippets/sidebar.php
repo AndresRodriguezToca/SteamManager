@@ -7,7 +7,7 @@
     </div>
   </div>
   <hr>
-  <a data-aos="fade-right" data-aos-delay="100" href="javascript:void(0)" active>
+  <a data-aos="fade-right" data-aos-delay="100" href="javascript:void(0)">
     <i class="fas fa-user" aria-hidden="true"></i>
     <span>Account Information</span><br>
     <?php
@@ -30,9 +30,9 @@
         echo '</div>';
     ?>
   </a>
-  <a data-aos="fade-right" data-aos-delay="200" href="javascript:void(0)">
-    <i class="fas fa-book" aria-hidden="true"></i>
-    <span>Library Collection</span>
+  <a data-aos="fade-right" data-aos-delay="200" href="javascript:void(0)" active>
+    <i class="fas fa-gamepad" aria-hidden="true"></i>
+    <span>Games Collection</span>
   </a>
   <a data-aos="fade-right" data-aos-delay="300" href="javascript:void(0)">
     <i class="fas fa-heart" aria-hidden="true"></i>
