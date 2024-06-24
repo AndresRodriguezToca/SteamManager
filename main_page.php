@@ -27,7 +27,19 @@
         <?php
             include_once($GLOBALS['webtemplates'] . "/snippets/sidebar.php");
         ?>
-
+        <!-- CONTENT OF SIDEBARS-->
+        <div class="fixed-container">
+            <div class="container">
+                <div class="row">
+                    <!-- ACCOUNT INFORMATION -->
+                    <div class="col-12">
+                        <?php
+                            include_once($GLOBALS['webtemplates'] . "/snippets/account_information.php");
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <?php
         

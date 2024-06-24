@@ -1,4 +1,4 @@
-<aside id="aside-sidebar" data-aos="fade-right" class="bc-steam">
+<aside id="aside-sidebar" data-aos="fade-right" class="bc-steam position-absolute">
   <i class="fa-solid fa-square-caret-left sidebar-collapse fa-3x" id="sidebar-menu-col-exp"></i>
   <div class="tilt-parent" data-tilt>
     <h5 class="pt-3"><i class="fas fa-brands fa-steam"></i> <span id="title-expanded">Steam Manager</span><span id="title-collapsed" hidden>SM</span></h5>

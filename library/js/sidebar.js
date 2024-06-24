@@ -19,6 +19,7 @@ $(document).ready(function(){
             $("#title-collapsed").removeAttr("hidden");
             $("#development-badge").attr("hidden", "hidden");
             $("#aside-sidebar").width("100px");
+            $(".fixed-container").css("margin", "0 150px");
         } else {
             $("#aside-sidebar a > span").show();
             $("#aside-sidebar a > .avatar-container").removeClass("d-none").addClass("d-flex");
@@ -26,6 +27,7 @@ $(document).ready(function(){
             $("#title-collapsed").attr("hidden", "hidden");
             $("#development-badge").removeAttr("hidden");
             $("#aside-sidebar").width("250px");
+            $(".fixed-container").css("margin", "0 300px");
         }
     });
 });
