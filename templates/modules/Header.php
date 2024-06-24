@@ -81,6 +81,7 @@ class Header{
             <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/aos/dist/aos.js"></script>
             <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/tilt.js/src/tilt.jquery.js"></script>
             <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/alertifyjs/build/alertify.js"></script>
+            <script type="text/javascript" src="' . $GLOBALS['webroot'] .'/library/node_modules/tippy.js/dist/tippy-bundle.umd.js"></script>
         ';
         // ADDITIONALS JS
         $this->compileJS .= $this->compileJSAdditional;
