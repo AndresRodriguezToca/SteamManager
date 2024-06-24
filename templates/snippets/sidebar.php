@@ -5,20 +5,20 @@
     Account Information<br>
     <?php
         $folderPath = __DIR__ . '/../../accounts/';
-        $accounts = scandir($folderPath);
+        $secondaryAccounts = json_decode($_ENV["secondary_accounts"], true);
+        $mainAccount = $_ENV["main_account"];
+        array_unshift($secondaryAccounts, $mainAccount); // Include main account in the list
         echo '<div class="avatar-container d-flex">';
-        foreach ($accounts as $account) {
-            if ($account !== '.' && $account !== '..') {
-                $accountData = json_decode(file_get_contents($folderPath . $account . '/account.json'), true);
-                $avatarUrl = $accountData['response']['players'][0]['avatarfull'];
-                $accountName = $accountData['response']['players'][0]['personaname'];
-                $SteamID = $accountData['response']['players'][0]['steamid'];
+        foreach ($secondaryAccounts as $account) {
+            $accountData = json_decode(file_get_contents($folderPath . $account . '/account.json'), true);
+            $avatarUrl = $accountData['response']['players'][0]['avatarfull'];
+            $accountName = $accountData['response']['players'][0]['personaname'];
+            $SteamID = $accountData['response']['players'][0]['steamid'];
         ?>
             <div id="<?php echo $SteamID ?>_image_loader" class="avatar-wrapper" title="<?php echo $accountName ?>">
                 <img width="25px" src="<?php echo $avatarUrl ?>" class="avatar-style rounded">
             </div>
         <?php
-            }
         }
         echo '</div>';
     ?>

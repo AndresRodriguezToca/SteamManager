@@ -4,11 +4,6 @@
 
     // CLASSES / COMPONETS
     use SteamManager\Modules;
-
-    // ENV VARIABLES
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->safeLoad();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

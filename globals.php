@@ -13,3 +13,7 @@ require_once $GLOBALS['webroot'] . '/library/vendor/autoload.php';
 
 // AUTOLOAD (COMPONENTS & MODULES)
 require_once $GLOBALS['webroot'] . '/templates/autoload.php';
+
+// ENV VARIABLES
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
