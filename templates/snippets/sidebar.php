@@ -1,6 +1,6 @@
 <aside data-aos="fade-right" class="bc-steam">
   <h5 class="pt-3"><i class="fas fa-brands fa-steam"></i> Steam Manager</h5>
-  <span class="badge text-bg-info">Development Build: 0.0.4 "Alpha"</span>
+  <span class="badge text-bg-info">Development Build: Alpha</span>
   <hr>
   <a data-aos="fade-right" data-aos-delay="100" href="javascript:void(0)" active>
     <i class="fas fa-user" aria-hidden="true"></i>
