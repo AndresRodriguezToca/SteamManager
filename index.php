@@ -25,7 +25,12 @@
                         <i class="fas fa-brands fa-steam fa-5x js-tilt tilt-child shadow-lg"></i>
                     </div>
                     <h2 class="text-center text-steam-color">Steam Manager</h2>
-                    <p class="text-center"><i class="fa-regular fa-circle fa-beat-fade text-warning" id="steamOnlineIcon"></i> <span id="steamStatusMessage">Checking if Steam Online...</span></p>
+                    <p class="text-center">
+                        <i class="fa-regular fa-circle fa-beat-fade text-warning" id="steamOnlineIcon"></i> 
+                        <span id="steamStatusMessage">Checking if Steam Online...</span>
+                        <i class="fa-regular fa-circle fa-beat-fade text-warning" id="appUpdatedIcon"></i>
+                        <span id="appStatusMessage">Checking for any Updates...</span>
+                    </p>
                     <hr>
                     <div data-aos="fade-right" class="input-group mb-3">
                         <label class="input-group-text" for="username"><i class="fas fa-user icon"></i></label>
@@ -158,6 +163,7 @@
                 echo json_encode($_ENV["remember_account"] ?? "Missing");
             ?>;
             let rootValidateSDK = '<?php echo $GLOBALS['webroutes']; ?>/account/get_account_information.php';
+            let rootCheckUpdate = '<?php echo $GLOBALS['webroutes']; ?>/repo/check_updates.php';
         </script>
     </body>
 </html>
