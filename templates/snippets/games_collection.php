@@ -17,6 +17,15 @@
     <body>
 		<div class="container">
 			<div class="row">
+                <!-- FILTERS SECTION -->
+                <form action="" method="POST" class="bc-steam sticky-top p-4">
+                    <div data-aos="fade-right" class="input-group mb-3 aos-init aos-animate">
+                        <label class="input-group-text" for="username"><i class="fas fa-search icon"></i></label>
+                        <input autocomplete="off" type="text" class="form-control" name="username" id="username" aria-describedby="username" placeholder="Search by Name">
+                        <button class="btn btn-outline-primary" type="button" id="username_how_to" data-bs-toggle="modal" data-bs-target="#staticAccountID">Account ID?</button>
+                    </div>
+                </form>
+                
 			    <?php
                     // DISPLAY A PICTURE OF EVERY ACCOUNT AND THEIR GAMES
                     $folderPath = __DIR__ . '/../../accounts/';
@@ -73,7 +82,7 @@
                     // DISPLAY SORTED GAMES
                     foreach ($gamesToDisplay as $game) {
                         ?>
-                        <div data-aos="zoom-in" class="col-3 mt-5 m-2">
+                        <div data-aos="zoom-in" class="col-3 mt-5">
                             <div data-tilt class="game-wrapper js-glare-scale tilt-parent" data-tippy-content="<?php echo htmlspecialchars($game['name']) ?>">
                                 <img src="<?php echo $game['owner_profile_picture'] ?>" class="avatar-style tilt-child avatar-game-owner rounded">
                                 <img src="<?php echo htmlspecialchars($game['image']) ?>" class="img-fluid rounded mx-auto d-block">
