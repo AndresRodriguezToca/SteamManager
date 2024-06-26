@@ -73,7 +73,7 @@
                     // DISPLAY SORTED GAMES
                     foreach ($gamesToDisplay as $game) {
                         ?>
-                        <div class="col-3 mt-5 m-2">
+                        <div data-aos="zoom-in" class="col-3 mt-5 m-2">
                             <div data-tilt class="game-wrapper js-glare-scale tilt-parent" data-tippy-content="<?php echo htmlspecialchars($game['name']) ?>">
                                 <img src="<?php echo $game['owner_profile_picture'] ?>" class="avatar-style tilt-child avatar-game-owner rounded">
                                 <img src="<?php echo htmlspecialchars($game['image']) ?>" class="img-fluid rounded mx-auto d-block">
