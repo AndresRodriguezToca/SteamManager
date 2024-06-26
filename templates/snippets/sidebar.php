@@ -1,10 +1,7 @@
-<aside id="aside-sidebar" data-aos="fade-right" class="bc-steam position-absolute fixed-top">
+<aside id="aside-sidebar" data-aos="fade-right" class="bc-steam fixed-top">
   <i class="fa-solid fa-square-caret-left sidebar-collapse fa-3x" id="sidebar-menu-col-exp"></i>
   <div class="tilt-parent" data-tilt>
     <h5 class="pt-3"><i class="fas fa-brands fa-steam"></i> <span id="title-expanded">Steam Manager</span><span id="title-collapsed" hidden>SM</span></h5>
-    <div class="tilt-child text-center" id="development-badge">
-      <span class="badge text-bg-info js-glare">Development Build: Alpha</span>
-    </div>
   </div>
   <hr>
   <a data-aos="fade-right" data-aos-delay="100" href="javascript:void(0)">
@@ -14,7 +11,7 @@
         $folderPath = __DIR__ . '/../../accounts/';
         $secondaryAccounts = json_decode($_ENV["secondary_accounts"], true);
         $mainAccount = $_ENV["main_account"];
-        array_unshift($secondaryAccounts, $mainAccount); // Include main account in the list
+        array_unshift($secondaryAccounts, $mainAccount);
         echo '<div class="avatar-container d-flex">';
         foreach ($secondaryAccounts as $account) {
             $accountData = json_decode(file_get_contents($folderPath . $account . '/account.json'), true);
