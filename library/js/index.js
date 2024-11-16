@@ -21,37 +21,6 @@ $(document).ready(function() {
 
     checkSteamPageStatus();
 
-    // CHECK IF THERE IS ANY UPDATES FROM REPO
-    function checkUpdates() {
-        $.ajax({
-            url: rootCheckUpdate, // Path to your PHP script
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (!response.error) {
-                    if (response.data) {
-                        $("#appUpdatedIcon").removeClass("text-warning").addClass("text-success");
-                        $('#appStatusMessage')
-                            .html('<a href="https://github.com/AndresRodriguezToca/SteamManager" target="_blank">Updates Available</a>');
-                    } else {
-                        $("#appUpdatedIcon").removeClass("text-warning").addClass("text-success");
-                        $('#appStatusMessage').text('Up to Date');
-                    }
-                } else {
-                    $("#appUpdatedIcon").removeClass("text-warning").addClass("text-danger");
-                    $('#appStatusMessage').text('Error Checking for Updates');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error: ' + status + ' - ' + error);
-                $('#update-results').html('<p>AJAX Error: Unable to check for updates.</p>');
-            }
-        });
-    }
-
-    // Call the function to check for updates when the page loads
-    checkUpdates();
-
     // INTERCEPT SUBMIT
     $("form").on("submit", function(event) {
         event.preventDefault();

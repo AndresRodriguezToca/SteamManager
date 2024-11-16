@@ -27,9 +27,7 @@
                     <h2 class="text-center text-steam-color">Steam Manager</h2>
                     <p class="text-center">
                         <i class="fa-regular fa-circle fa-beat-fade text-warning" id="steamOnlineIcon"></i> 
-                        <span id="steamStatusMessage">Checking if Steam Online...</span>
-                        <i class="fa-regular fa-circle fa-beat-fade text-warning" id="appUpdatedIcon"></i>
-                        <span id="appStatusMessage">Checking for any Updates...</span>
+                        <span id="steamStatusMessage">Checking if Steam is Online...</span>
                     </p>
                     <hr>
                     <div data-aos="fade-right" class="input-group mb-3">
@@ -163,7 +161,6 @@
                 echo json_encode($_ENV["remember_account"] ?? "Missing");
             ?>;
             let rootValidateSDK = '<?php echo $GLOBALS['webroutes']; ?>/account/get_account_information.php';
-            let rootCheckUpdate = '<?php echo $GLOBALS['webroutes']; ?>/repo/check_updates.php';
         </script>
     </body>
 </html>
