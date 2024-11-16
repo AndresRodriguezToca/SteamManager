@@ -55,7 +55,7 @@
                     </div>
                     <hr>
                     <p class="text-center">Publicly Distributed Free of Use by <a href="https://github.com/AndresRodriguezToca" target="_blank">AndresRodriguezToca</a></p>
-                    <p class="text-center"><a href="https://github.com/AndresRodriguezToca/SteamManager" target="_blank">Repository</a> <a href="#" target="_blank">Confidentiality</a> <a href="https://discord.gg/2qnSyYex2s" target="_blank">Community</a></p>
+                    <p class="text-center"><a href="https://github.com/AndresRodriguezToca/SteamManager" target="_blank">Repository</a> <a href="https://discord.gg/2qnSyYex2s" target="_blank">Community</a></p>
                 </form>
             </div>
         </div>
