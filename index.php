@@ -16,7 +16,7 @@
 			$simplyHeader->_includeGlobalsCSS();
 		?>
 	</head>
-    <body class="d-flex justify-content-center align-items-center" style="height: 100vh; background-image: url('library/assets/lake-4541454_1920.jpg');">
+    <body class="d-flex justify-content-center align-items-center b-login">
         <!-- LOGIN PAGE -->
         <div data-tilt>
             <div class="container-sm bc-steam rounded shadow-lg p-4 bg-body-tertiary rounded">

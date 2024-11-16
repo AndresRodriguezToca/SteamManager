@@ -2,6 +2,12 @@
     font-family: 'Nunito Sans', sans-serif;
 }
 
+.b-login{
+    height: 100vh; 
+    background-image: url('../../library/assets/lake-4541454_1920.jpg'); 
+    background-repeat: round;
+}
+
 .bc-steam{
     color:white;
     background: linear-gradient(#0e1118, #0e1118);
