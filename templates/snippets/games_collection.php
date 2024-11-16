@@ -44,7 +44,14 @@
                         // FETCH ACCOUNT GAMES
                         $accountData = json_decode(file_get_contents($folderPath . $account . '/games.json'), true);
                         $games = $accountData['response']['games'];
+                        $counter = 0;
                         foreach ($games as $game) {
+                            //TIMEOUT COUNTER
+                            if ($counter > 0 && $counter % 50 == 0) {
+                                sleep(10); // 10 SECONDS
+                            }
+                            $counter++;
+
                             if (in_array($game['appid'], $processedGames)) {
                                 continue;
                             }
