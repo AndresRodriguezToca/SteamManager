@@ -47,7 +47,7 @@
                         $counter = 0;
                         foreach ($games as $game) {
                             //TIMEOUT COUNTER
-                            if ($counter > 0 && $counter % 50 == 0) {
+                            if ($counter > 0 && $counter % 20 == 0) {
                                 sleep(10); // 10 SECONDS
                             }
                             $counter++;
