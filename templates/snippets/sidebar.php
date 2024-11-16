@@ -44,21 +44,17 @@
     <i class="fas fa-cog" aria-hidden="true"></i>
     <span>Settings</span>
   </a>
-  <a data-aos="fade-right" data-aos-delay="600" href="javascript:void(0)">
-    <i class="fas fa-lock" aria-hidden="true"></i>
-    <span>Confidentiality</span>
-  </a>
   <hr>
-  <a data-aos="fade-right" data-aos-delay="700" href="javascript:void(0)">
-    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+  <a data-aos="fade-right" data-aos-delay="700" target="_blank" href="https://github.com/AndresRodriguezToca/SteamManager">
+    <i class="fa-brands fa-github" aria-hidden="true"></i>
     <span>Repository</span>
   </a>
-  <a data-aos="fade-right" data-aos-delay="800" href="javascript:void(0)">
-    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+  <a data-aos="fade-right" data-aos-delay="800" target="_blank" href="https://discord.gg/2qnSyYex2s">
+    <i class="fa-brands fa-discord" aria-hidden="true"></i>
     <span>Community</span>
   </a>
-  <a data-aos="fade-right" data-aos-delay="900" href="javascript:void(0)">
-    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+  <a data-aos="fade-right" data-aos-delay="900" target="_blank" href="https://buymeacoffee.com/steammanager">
+    <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i>
     <span>Donate</span>
   </a>
 </aside>

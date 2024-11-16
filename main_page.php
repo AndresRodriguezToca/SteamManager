@@ -38,7 +38,7 @@
             <!-- GAMES COLLECTION -->
             <div class="collapse show">
                 <?php
-                    include_once($GLOBALS['webtemplates'] . "/snippets/games_collection.php");
+                    // include_once($GLOBALS['webtemplates'] . "/snippets/games_collection.php");
                 ?>
             </div>
         </div>

@@ -26,9 +26,20 @@ $(document).ready(function(){
             $("#title-expanded").removeAttr("hidden");
             $("#title-collapsed").attr("hidden", "hidden");
             $("#development-badge").removeAttr("hidden");
-            $("#aside-sidebar").width("250px");
+            $("#aside-sidebar").width("max-content");
             $(".fixed-container").css("margin", "0 300px");
         }
+
+        // DATA - LINK
+        $('[data-link="openRepo"]').on('click', function() {
+            window.open('https://github.com/AndresRodriguezToca/SteamManager', '_blank');
+        });
+        $('[data-link="openCom"]').on('click', function() {
+            window.open('https://discord.gg/2qnSyYex2s', '_blank');
+        });
+        $('[data-link="openDon"]').on('click', function() {
+            window.open('https://www.paypal.com/donate/?hosted_button_id=AQQQN2TFPZET4', '_blank');
+        });
     });
 });
 

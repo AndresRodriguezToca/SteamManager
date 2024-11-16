@@ -48,8 +48,8 @@
         <div class="container">
             <!-- LOADING ANIMATION -->
             <div class="d-flex justify-content-center align-items-center" id="loadingContainer">
-                <div class="js-scale">
-                    <div data-tilt class="tilt-parent" data-aos="zoom-in-up" style="height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div>
+                    <div style="height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                         <div class="loader tilt-child"></div>
                         <p class="mt-3 tilt-child" id="loadingMessage">Double-Checking Steam API Connection...</p>
                         <div class="tilt-child d-flex" id="avatarList"></div>
