@@ -1,0 +1,54 @@
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.bc-steam{
+    color:white;
+    background: linear-gradient(#0e1118, #0e1118);
+}
+
+.text-steam-color{
+    color:#1e90ff;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+.shake {
+    animation: shake 2.0s infinite;
+    border: 2px solid #dc3545;
+}
+
+.tilt-parent{
+    transform-style: preserve-3d;
+}
+
+.tilt-child{
+    transform: translateZ(20px);
+}
+.js-scale{
+    z-index: 1;
+}
+
+.js-scale:hover{
+    z-index: 9999;
+}
+
+.fixed-container{
+    width: calc(100% - 300px);
+    margin: 0 0 0 300px;
+    max-width: 100%;
+}
+
+.game-wrapper{
+    cursor: pointer;
+}
