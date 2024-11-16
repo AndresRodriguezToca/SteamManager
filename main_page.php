@@ -30,13 +30,13 @@
         <!-- CONTENT OF SIDEBARS-->
         <div class="fixed-container">
             <!-- ACCOUNT INFORMATION -->
-            <div class="collapse">
+            <div class="collapse show">
                 <?php
                     include_once($GLOBALS['webtemplates'] . "/snippets/account_information.php");
                 ?>
             </div>
             <!-- GAMES COLLECTION -->
-            <div class="collapse show">
+            <div class="collapse">
                 <?php
                     // include_once($GLOBALS['webtemplates'] . "/snippets/games_collection.php");
                 ?>

@@ -4,7 +4,7 @@
     <h5 class="pt-3"><i class="fas fa-brands fa-steam"></i> <span id="title-expanded">Steam Manager</span><span id="title-collapsed" hidden>SM</span></h5>
   </div>
   <hr>
-  <a data-aos="fade-right" data-aos-delay="100" href="javascript:void(0)">
+  <a data-aos="fade-right" data-aos-delay="100" href="javascript:void(0)" active>
     <i class="fas fa-user" aria-hidden="true"></i>
     <span>Account Information</span><br>
     <?php
@@ -27,7 +27,7 @@
         echo '</div>';
     ?>
   </a>
-  <a data-aos="fade-right" data-aos-delay="200" href="javascript:void(0)" active>
+  <a data-aos="fade-right" data-aos-delay="200" href="javascript:void(0)">
     <i class="fas fa-gamepad" aria-hidden="true"></i>
     <span>Games Collection</span>
   </a>

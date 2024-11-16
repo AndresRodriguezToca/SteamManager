@@ -9,14 +9,16 @@
 			// INITIATE CLASS
 			$simplyHeader = new Modules\Header("Steam Manager - Account Information");
 			$simplyHeader->_includeSimplyMeta();
+			$simplyHeader->includeAdditionalCSS("library/css/account_information.css");
 			$simplyHeader->_includeSimplyCSS();
+			$simplyHeader->includeAdditionalJS("library/js/account_information.js");
 			$simplyHeader->_includeGlobalsCSS();
 		?>
 	</head>
     <body>
 		<div class="container">
 			<div class="row">
-				<div class="d-flex justify-content-center">
+				<div class="d-flex justify-content-center" id="accountFlex">
 					<?php
 						// DISPLAY A PICTURE OF EVERY ACCOUNT
 						$folderPath = __DIR__ . '/../../accounts/';
@@ -25,9 +27,8 @@
 						array_unshift($secondaryAccounts, $mainAccount); // Include main account in the list
 						
 						$accountsCount = count($secondaryAccounts);
-						
-						foreach ($secondaryAccounts as $account) {
-					?>
+						$firstAccountSelected = false;
+						foreach ($secondaryAccounts as $account) { ?>
 							<div class="m-2">
 								<?php
 									$accountData = json_decode(file_get_contents($folderPath . $account . '/account.json'), true);
@@ -35,13 +36,18 @@
 									$accountName = $accountData['response']['players'][0]['personaname'];
 									$SteamID = $accountData['response']['players'][0]['steamid'];
 								?>
-								<div id="<?php echo $SteamID ?>_image_loader" class="avatar-wrapper" data-tippy-content="<?php echo $accountName ?>">
-									<img src="<?php echo $avatarUrl ?>" class="img-fluid rounded mx-auto d-block">
+								<div id="<?php echo $SteamID ?>_image_loader" <?php echo $firstAccountSelected ? "data-selector='disable'" : "data-selector='enable'"; ?>data-selector="active"  class="avatar-wrapper" data-tippy-content="<?php echo $accountName ?>">
+									<a href="#"><img src="<?php echo $avatarUrl ?>" class="img-fluid rounded mx-auto d-block"></a>
 								</div>
 							</div>
-					<?php
-						}
-					?>
+					<?php $firstAccountSelected = true; } ?>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-12 mt-3">
+
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
